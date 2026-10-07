@@ -1,0 +1,437 @@
+{
+  "prepared_date": "2026-10-07",
+  "scope": "Source-preserving notebook organization; no experiment execution",
+  "validation": {
+    "schema": "nbformat 5.11.1",
+    "executed": false,
+    "visual_rendering_reviewed": false
+  },
+  "notebooks": [
+    {
+      "path": "notebooks/01_prott5_predictor.ipynb",
+      "source_filename": "SNOOPPI_ProtT5_Predictor(2).ipynb",
+      "source_file_sha256": "b8c89c4bd5928c7fda9c11f5378c8b15ce1f0ae979022f8a8c3d612e00d190da",
+      "cleaned_file_sha256": "a440aa31cf714884cdd363461f9f6c98048cecf5c0d0f08b652deb96f17f720e",
+      "code_cell_count": 42,
+      "original_code_cell_sha256_in_order": [
+        "0f5fb63202e3b204979fd13f95addb8608500bf985f382f92d3aa35f3a0a3992",
+        "7463f5ac26b71991bd1e83b07d4cc462aaa7b122d3fc5a60cd5791ba629039c7",
+        "5e716f2304b865d4ff51a64ec58f2196bffa5496a7362665f6b6a8cedd05a8b1",
+        "fe15c943a0d0875a2346f32e5b4d90d5e7e64847282a35dda56b4a74933c0f54",
+        "32044c36958a951ba3aa0f7c3352559a49f4e3713065dd4590babd5988613553",
+        "9c61743e3fa8edc3c55a33305c12c8da9a93c1356ac5250620c130f14f35ee2b",
+        "fc02836d16dce021bbfda39235e763886ddbd36dced9f63b0d2a7070d7caec7b",
+        "cd002c1795abd0922a952ee2ad6bee52784310f4125680993304342c3c9a6150",
+        "d95fc54fe04e47048a9ff3065e00a64c05a54908a126957728b6e1bef65cd510",
+        "f051fcc9171ea8be14e91eef29bafab58889f5a5e7af90310fd61f18ff512af5",
+        "4d4103d0bfc1555999dac6ec813e72d296478a813f728f68e8ea304a59b85e8f",
+        "1997d5a84c9cecf43282d41f3c43303ba435ac57aab852432006d7eb3f1a5e4d",
+        "bd720e96d91a7aad380e274c10a75a47cdd0afbd56687e6e1dfb3955c6af6b4e",
+        "de1f294099f2bd1a270f45b3411f4257222b438f304743467455cfe091aae1c1",
+        "5e29663b50613215e822c8c33ba7a5407d90f2d6dc343efa6db21b7645a33eb1",
+        "1dcbe6abeea837ada5008433196a6843fc7d3e6d9623975266b68cf32af56f62",
+        "6ce8ace668b04cf8ed91682cb52466d82eeea1c9c57484fca434b84b9d485b0b",
+        "1a9491b535990b968e7beb451dbea1866d3ab7744674f3bc40faa5971b63bbbb",
+        "6dfa90fceabdf28aa03a9736b4abd08cb6726c1496d992920db40e9e403edc34",
+        "b4a7d8c20175362af6e122272a47987afdd083c435d5417100e551d6d5657ef6",
+        "eae7ea6eece0f7ee6c7a674ca81d01d57cd2c488c901099dacc10540223964f3",
+        "d3852b35671e762fe56eefe86a5f88dbbdfb00fee935d8eae7b51349924ad14b",
+        "79aba04f97db96cef05c664cd244c98b2845965d067445c92b7300b071c268cf",
+        "70d89c1ae4fba97ef3246805621c8aeea69f36bdb2b9c4233bc1889097b6ba4c",
+        "1fb747bc0f7b5720a40095e40cf7bd73574b26b4ac84cb1ec059c6473809cfa8",
+        "97cb0323ab1f75fd1fd626ee09c9fbeced3db51a1d0ca7fdc2971c8e352ff88d",
+        "b364531d5730ba99ca803f52901737cdd00ffc002057c8ad6cacf70470e1ecaa",
+        "b856f0d639d8fb135203c716624991a65ba1b7a4315af36f9acda8ea1366808b",
+        "b6e723fafcdb84539d6d113e90ba1d97afef1715943b903ef967e48159fb7480",
+        "c647fd4b359566092604f7ca9288eb68689a0e229d74c708b2a943bcf7818c44",
+        "eb30258a05ef3dbce5940322febb08ce7cf20397c0178b901eba215a3cd34e41",
+        "70d5ce17973209c06fbe9376b08506de50534df2fcc1eeebe51f02af95deec4c",
+        "3f7c515fa9bf8f429aa1f10de9652e07928c9ce51a18bb8e36ec1adf7da44631",
+        "17131b7c707c4e89773cbc2c8bf94df5eb612fabd11990107ac721ee64083f87",
+        "0d2d0aab8028f42732ec80a06618eab504d721efabf6710b5b22b0c865631b67",
+        "30df413f579f94aabd6f3aa99b30ff637193173e0fa5ec6a0a09074fdff9f8db",
+        "c5f9f0a88d9ede6ac9e59872872e0ab303f9a6e1786b446c9ce96fff50149200",
+        "65d9b54e91b37382430adcb92352b592f985ffc61f05e729b014275629a3e010",
+        "32f63cfbb56d7c2c6dc0bc13fbd857f849ed571aff7c0661d910377440a3bba6",
+        "6af8ebc69491f6681e49dfde4e8fc55fda04f5a889acb02ca0b1f80ecdf3388b",
+        "306f2db80c72c18cac03355d46ed368d04718b3903d4d30f04d84b067f7695bf",
+        "fbe1ba9aa78c7e299b2a3761d153e5e7591e42401f537566d166c068d055907a"
+      ],
+      "code_cell_map_zero_based": [
+        {
+          "source_index": 0,
+          "cleaned_index": 2
+        },
+        {
+          "source_index": 1,
+          "cleaned_index": 3
+        },
+        {
+          "source_index": 2,
+          "cleaned_index": 4
+        },
+        {
+          "source_index": 3,
+          "cleaned_index": 6
+        },
+        {
+          "source_index": 4,
+          "cleaned_index": 7
+        },
+        {
+          "source_index": 5,
+          "cleaned_index": 8
+        },
+        {
+          "source_index": 6,
+          "cleaned_index": 9
+        },
+        {
+          "source_index": 7,
+          "cleaned_index": 10
+        },
+        {
+          "source_index": 8,
+          "cleaned_index": 11
+        },
+        {
+          "source_index": 9,
+          "cleaned_index": 12
+        },
+        {
+          "source_index": 10,
+          "cleaned_index": 14
+        },
+        {
+          "source_index": 11,
+          "cleaned_index": 15
+        },
+        {
+          "source_index": 12,
+          "cleaned_index": 17
+        },
+        {
+          "source_index": 13,
+          "cleaned_index": 18
+        },
+        {
+          "source_index": 14,
+          "cleaned_index": 19
+        },
+        {
+          "source_index": 15,
+          "cleaned_index": 21
+        },
+        {
+          "source_index": 16,
+          "cleaned_index": 22
+        },
+        {
+          "source_index": 17,
+          "cleaned_index": 23
+        },
+        {
+          "source_index": 18,
+          "cleaned_index": 24
+        },
+        {
+          "source_index": 19,
+          "cleaned_index": 26
+        },
+        {
+          "source_index": 20,
+          "cleaned_index": 27
+        },
+        {
+          "source_index": 21,
+          "cleaned_index": 28
+        },
+        {
+          "source_index": 22,
+          "cleaned_index": 29
+        },
+        {
+          "source_index": 23,
+          "cleaned_index": 30
+        },
+        {
+          "source_index": 24,
+          "cleaned_index": 32
+        },
+        {
+          "source_index": 25,
+          "cleaned_index": 33
+        },
+        {
+          "source_index": 26,
+          "cleaned_index": 35
+        },
+        {
+          "source_index": 27,
+          "cleaned_index": 36
+        },
+        {
+          "source_index": 28,
+          "cleaned_index": 37
+        },
+        {
+          "source_index": 29,
+          "cleaned_index": 38
+        },
+        {
+          "source_index": 30,
+          "cleaned_index": 40
+        },
+        {
+          "source_index": 31,
+          "cleaned_index": 42
+        },
+        {
+          "source_index": 32,
+          "cleaned_index": 43
+        },
+        {
+          "source_index": 33,
+          "cleaned_index": 45
+        },
+        {
+          "source_index": 34,
+          "cleaned_index": 47
+        },
+        {
+          "source_index": 35,
+          "cleaned_index": 49
+        },
+        {
+          "source_index": 36,
+          "cleaned_index": 51
+        },
+        {
+          "source_index": 37,
+          "cleaned_index": 52
+        },
+        {
+          "source_index": 38,
+          "cleaned_index": 54
+        },
+        {
+          "source_index": 39,
+          "cleaned_index": 56
+        },
+        {
+          "source_index": 40,
+          "cleaned_index": 58
+        },
+        {
+          "source_index": 41,
+          "cleaned_index": 59
+        }
+      ],
+      "code_preservation": "exact source strings and original code-cell order"
+    },
+    {
+      "path": "notebooks/02_esm2_benchmark.ipynb",
+      "source_filename": "SNOOPPI_ESM2_Benchmark.ipynb",
+      "source_file_sha256": "cf682810b6c4065af9dc5276e9354ed6392985ff23846554e96761bba25ce08e",
+      "cleaned_file_sha256": "0ec37291ce5e1815868073b291c8f66778847b02d698a5d03d13e06583ce9bd7",
+      "code_cell_count": 18,
+      "original_code_cell_sha256_in_order": [
+        "db58609aca8566de733a24ba045f87837bb792e6c603287f529895d225ccc874",
+        "89488767a040a563f0c7db7db52c88ddd4117da1c94bf546dc0f2369a3a88d21",
+        "65cad09a5a99b40321cf23662ae3e6dc679183aaf378b4e713864c76acd97ce3",
+        "93bb2aa6e1b14b47c3c69acfd0aecdf529919038f1033dd987b0c638ddc7a63a",
+        "5d3f2815389d715fb048f453dd4e438981c391ebebb672d700029db8aa7eaf1d",
+        "e9c082f3772bce0f22dddba445593a6b52d1682691326c30bcf5a70d35f7e0e5",
+        "61e9a532cf1c9e268e0c27d06a1786fdcd8ca5168a26595e33585f5198077934",
+        "afbb24209f5dfed980bf91ed3126a9a1dc5a844698afefbc2ad52b6ff3350fbe",
+        "b602af5cd1a6d24a9e644bba8bc051055a04eb9ffda64984c1aa6166e33643ea",
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "1c17f5cee3a5d6c5e124ac85f6d4634a6544b30a94e178ee1717d5fd78598326",
+        "a979470d7eb3532d28ebdf7d422863ed6aa7dd85c2a7aed026db0254be5397a2",
+        "95f7a66479eff85099d285529219392d19def953cc77a9c69e26512ebdc956f7",
+        "0e4732bf37671ca324f9a1694111c40c4e1fc79a31a565e6d4580425af990688",
+        "17655d1d9cbe2a12fffefed1f4f01451dc9e7a6d89ac45d84c581f1ced634995",
+        "b563fb7322ef4c2262ea3d5d89a25c6fc0aa48198f8d8ae1ff3405285511968f",
+        "a81602a2ce2289ebdbf6742f41d088ba08d9dd78f137bc9d02421ea16ac92110",
+        "6600ee3f78180fc2c06bc7bbd6117c595760ab27010d4722ddf375b9e479908b"
+      ],
+      "code_cell_map_zero_based": [
+        {
+          "source_index": 2,
+          "cleaned_index": 2
+        },
+        {
+          "source_index": 3,
+          "cleaned_index": 3
+        },
+        {
+          "source_index": 4,
+          "cleaned_index": 4
+        },
+        {
+          "source_index": 6,
+          "cleaned_index": 6
+        },
+        {
+          "source_index": 8,
+          "cleaned_index": 8
+        },
+        {
+          "source_index": 10,
+          "cleaned_index": 10
+        },
+        {
+          "source_index": 11,
+          "cleaned_index": 11
+        },
+        {
+          "source_index": 12,
+          "cleaned_index": 12
+        },
+        {
+          "source_index": 13,
+          "cleaned_index": 14
+        },
+        {
+          "source_index": 14,
+          "cleaned_index": 15
+        },
+        {
+          "source_index": 16,
+          "cleaned_index": 17
+        },
+        {
+          "source_index": 18,
+          "cleaned_index": 19
+        },
+        {
+          "source_index": 20,
+          "cleaned_index": 21
+        },
+        {
+          "source_index": 21,
+          "cleaned_index": 22
+        },
+        {
+          "source_index": 23,
+          "cleaned_index": 24
+        },
+        {
+          "source_index": 25,
+          "cleaned_index": 26
+        },
+        {
+          "source_index": 27,
+          "cleaned_index": 28
+        },
+        {
+          "source_index": 28,
+          "cleaned_index": 30
+        }
+      ],
+      "code_preservation": "exact source strings and original code-cell order"
+    },
+    {
+      "path": "notebooks/03_esmc_benchmark.ipynb",
+      "source_filename": "SNOOPPI_ESMC_Benchmark.ipynb",
+      "source_file_sha256": "d79bddfdb1f9c59d99391d6c2beaae33fe087eb600332d127dac497aed370296",
+      "cleaned_file_sha256": "4a4e0795bafc0a3fdb8deabf30cb904dda1aa6f48f6f190d4eb22652b50164ba",
+      "code_cell_count": 18,
+      "original_code_cell_sha256_in_order": [
+        "46c2ffe12ec041e81e9815f2bc99ce5be76a7d81c90c1b464f3dd89e8837a907",
+        "fc3492cb1843d2f56a0f344a4f2f7127e5e2f2bc457cac81f9b1453e3628793f",
+        "73328534e1f7e35a9b1f2faece78ba4bacb93b438ab85e4299886c54b6fcd0cc",
+        "04807e1944f13b9d0c4686809662c60c39b561507145a4cef7fb7c4ae9223f03",
+        "58119859fb1a80f1e5ee4d57afcd65c213853e9790e82afb9a082ca22b9497fd",
+        "6d78529486f68de382088f6250f96eda69b6e8ff6348490b04ff2617060493ec",
+        "6940cfaab93e6031adbae0f4bf2b9c6286b6b1826f75033742a981d9167cb699",
+        "8d37a5a5bc3713fa824ab9b698f4f5064327052a35b75f38189037f3638171a2",
+        "41987b002a1745385e61cc507cbc1d46c927e72fe39a6e7791b4806f0085d17d",
+        "bb7937fa7299841373fc0584babd299a4130eb42aa155ece5349942f9586c068",
+        "7cf86adffda44a0012f9c5da2faf1f1a1f15fa53350e0d9a346a4757a475e1b6",
+        "b736aa3783a5a30a3db96f9e9fe7d4f9ce2bbbaa38a82da7a20ed95f00c66e54",
+        "2665fa2c2b1dcad07b99e14e3a6b78b4ba11703e3c3de1aaf0fbfa18d5c95559",
+        "3d9aadd9880057bf3980f6379af316e15cb5a29824a3a3b132e398310b643570",
+        "0282542703163676c725d1cb6e19d31b1103b05e3752fca596bcd29e1bc5d5f0",
+        "2e23ee09ac5698ecb8a824e15cfc59e74251ca80217bbca31449c0caaa54c360",
+        "91a673c0725a226afcf42431c67d5c890fde65dd2d0054ddf4e13eee8ff61ca9",
+        "fdb3bfe146c6e8ac6d10b7b65c9c03163bd2f10a578e618b45a8732e0dcf4cbe"
+      ],
+      "code_cell_map_zero_based": [
+        {
+          "source_index": 2,
+          "cleaned_index": 2
+        },
+        {
+          "source_index": 3,
+          "cleaned_index": 3
+        },
+        {
+          "source_index": 4,
+          "cleaned_index": 4
+        },
+        {
+          "source_index": 6,
+          "cleaned_index": 6
+        },
+        {
+          "source_index": 7,
+          "cleaned_index": 7
+        },
+        {
+          "source_index": 9,
+          "cleaned_index": 9
+        },
+        {
+          "source_index": 10,
+          "cleaned_index": 10
+        },
+        {
+          "source_index": 11,
+          "cleaned_index": 11
+        },
+        {
+          "source_index": 13,
+          "cleaned_index": 13
+        },
+        {
+          "source_index": 15,
+          "cleaned_index": 15
+        },
+        {
+          "source_index": 17,
+          "cleaned_index": 17
+        },
+        {
+          "source_index": 18,
+          "cleaned_index": 18
+        },
+        {
+          "source_index": 20,
+          "cleaned_index": 20
+        },
+        {
+          "source_index": 21,
+          "cleaned_index": 21
+        },
+        {
+          "source_index": 23,
+          "cleaned_index": 23
+        },
+        {
+          "source_index": 25,
+          "cleaned_index": 25
+        },
+        {
+          "source_index": 27,
+          "cleaned_index": 27
+        },
+        {
+          "source_index": 29,
+          "cleaned_index": 29
+        }
+      ],
+      "code_preservation": "exact source strings and original code-cell order"
+    }
+  ]
+}
