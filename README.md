@@ -1,6 +1,6 @@
 # SNOOPPI
 
-Research notebooks for binary protein–protein interaction classification using frozen **ProtT5, ESM-2, and ESM-C** representations and a symmetric multilayer perceptron. Prepared for Ryan Dai's independent research.
+Research notebooks for binary protein–protein interaction classification using frozen **ProtT5, ESM-2, and ESM-C** representations and a symmetric multilayer perceptron.
 
 This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
 
