@@ -1,4 +1,4 @@
-# SNOOPPI Benchmarks
+# SNOOPPI
 
 Research notebooks for binary protein–protein interaction classification using frozen **ProtT5, ESM-2, and ESM-C** representations and a symmetric multilayer perceptron. Prepared for Ryan Dai's independent research.
 
