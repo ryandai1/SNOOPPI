@@ -1,8 +1,17 @@
 # SNOOPPI
 
+**English** | [简体中文](README.zh-CN.md)
+
 Research notebooks for binary protein–protein interaction classification using frozen **ProtT5, ESM-2, and ESM-C** representations and a symmetric multilayer perceptron.
 
 This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
+
+## Start here
+
+- **Run the main experiments:** follow the [notebook order](#notebook-order) and [running instructions](#running-the-experiments) below. Prepare Google Colab with a GPU, mounted Google Drive, and the shared split CSVs.
+- **Audit existing splits or compare cached embeddings:** see the [draft experiment guide](drafting_code/README.md).
+- **Review unknown-pair candidates:** see the [mining artifact guide](mined/README.md); low model scores do not confirm negative interactions.
+- **Read the main workflow in Chinese:** see [简体中文说明](README.zh-CN.md). English remains the primary documentation language; the linked detailed guides are in English.
 
 ## Citing SNOOPPI
 
