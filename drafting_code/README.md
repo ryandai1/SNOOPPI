@@ -41,6 +41,9 @@ MMseqs2 export exists, reconcile that evidence before calling a split strict.
 5. **04** reads saved predictions from 01/03/05. It verifies the whole split-set
    fingerprint and every test pair/label before comparison. **06** requires a
    frozen scorer and independent mutation/interface annotations for test pairs.
+6. **07** audits the exported SNOOPPI unknown CSV, scores valid rows with an
+   existing frozen ProtT5 MLP, and optionally saves a negative-candidate review
+   queue and verdict cache. No semi-supervised training is performed.
 
 **Cross-species, temporal, mutation-family splitting, residue training, and LoRA
 training are study-specific contracts/scaffolds, not completed experiments.**
@@ -166,6 +169,51 @@ children of `splits_ablations/`, and existing destinations cannot be overwritten
 
 ## Unknown candidates and mutation inputs
 
+For model-based mining of the full unknown export, use
+[`07_mine_unknown_negatives.ipynb`](07_mine_unknown_negatives.ipynb) and the
+[`mined/` artifact guide](../mined/README.md). Fill in `UNKNOWN_CSV`, the source
+dataset revision, `CHECKPOINT_PATH`, and your existing ProtT5 cache paths. The
+known compatible checkpoint is the original notebook **01** export, not draft
+**03**, which does not save this MLP. If another notebook saved a different head,
+this adapter rejects it rather than interpreting its weights as this predictor.
+Both original export formats are supported: `best_predictor_checkpoint.pt`
+(`model_state_dict` wrapper) and `best_predictor_weights.pt` (bare state dict).
+The predictor loader uses the same trusted-file loading rule as the cache loader.
+It rejects conflicting encoder, normalization, pair-feature-order or training
+split metadata, including a nested `split_manifest` fingerprint. Scoring checks
+finite features and logits before sigmoid. A regression compares loaded scores
+and pair features with the **original notebook definitions** for both formats.
+
+07 reports observed counts, sequence validity, full/input-prefix overlap with
+each labeled partition, and optional raw-key embedding coverage. It rejects PTM
+markup, whitespace, missing/all-X inputs and supplied non-protein molecule types;
+reviewed parsing can be developed separately. It does not change the historical
+ProtT5 normalization. Missing embeddings stop scoring without dropping rows;
+append a separately saved compatible unknown-protein cache when needed.
+
+Scoring and selection have separate switches. Scoring retains every valid row,
+including overlap and duplicates, and writes the requested four columns plus a
+hashed manifest. Selection requires `score < 0.1` by default and no identity
+overlap for either partner with **any** labeled train/validation/test protein.
+The exclusion considers full-sequence, actual ProtT5-input and ESM-input identity,
+so long-sequence prefix collisions are also excluded. It does not prove homology
+isolation. Candidates are deduplicated full pairs and ranked by score then
+identity; `K=None` keeps all eligible pairs. Seed is recorded but no random
+sampling is performed.
+All scored copies of a full pair must agree, including copies above the cutoff;
+inconsistent duplicates stop selection instead of favoring a low-scoring copy.
+
+Review checkpoint/cache training provenance before enabling selection. Legacy
+exports lack split/revision signatures; manual acknowledgement does not resolve
+a recorded conflicting split fingerprint. Changed source CSVs, partitions,
+caches, checkpoints or score files invalidate reuse. Outputs refuse overwrite.
+The YAML config uses JSON syntax (valid YAML 1.2), and the verdict retains unknown
+status and absence of negative evidence. Sigmoid scores are uncalibrated; no
+per-pair confidence interval or exponential-tilting model is claimed. Unknown
+candidates are never assigned binary labels or inserted into supervised splits.
+
+The metadata-matched candidate workflow in **02** remains a separate design:
+
 `raw/snooppi_unknown_candidates.csv` provides nonempty partner sequences;
 optional source labels must be `unknown` or absent. Candidates match available
 reviewed `species`, `localization`, `family`, and/or `expression_bin` strata from
@@ -226,7 +274,9 @@ Attention, mutation deltas and sigmoid scores are not binding-affinity evidence.
 python -m pip install -r drafting_code/requirements.txt
 python scripts/validate_notebooks.py  # original code-cell preservation
 python scripts/validate_drafts.py     # schema, syntax, identical setup, safe defaults
-python -m pytest tests/test_draft_protocol.py -q
+python -m pytest tests/test_draft_protocol.py tests/test_unknown_mining.py -q
+python scripts/smoke_mining.py        # 07 only: synthetic frozen inference; NO training
+# Optional separate check of 00–06 (includes synthetic baseline/head training):
 python scripts/smoke_drafts.py        # synthetic end-to-end only; writes under work/
 ```
 
@@ -235,4 +285,7 @@ and dimensions, reviewed fixture metadata, and a mock mutation scorer. It enable
 writes/training **only in copied notebooks against its synthetic directory**,
 executes all seven drafts, and saves executed notebooks/HTML/plots under `work/`.
 It does not load Drive, download PLMs, test LoRA/residue training or establish
-scientific performance. Review validation details in [REVISION_NOTES.md](REVISION_NOTES.md).
+scientific performance. `smoke_mining.py` separately executes 07 with artificial
+weights, vectors and pairs, without fitting any model or downloading any PLM.
+Neither smoke test establishes actual unknown-pair counts, negative evidence or
+performance. Review validation details in [REVISION_NOTES.md](REVISION_NOTES.md).

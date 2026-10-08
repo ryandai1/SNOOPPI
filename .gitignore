@@ -10,3 +10,5 @@ checkpoints/
 tables/
 figures/
 raw/
+mined/*
+!mined/README.md

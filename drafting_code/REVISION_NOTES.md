@@ -142,3 +142,82 @@ The follow-up checks include all seven shared setup/schema/syntax validations
 and the original notebook preservation check. The regression suite now has
 **20 passing tests**. All file-writing/training switches remain disabled by
 default in the saved notebooks.
+
+## Unknown-pair mining addition (07)
+
+Added `07_mine_unknown_negatives.ipynb`, `snooppi_mining.py`, and the tracked
+`mined/README.md` scaffold. Its shared setup is identical to 00–06. Drive input,
+checkpoint and optional extra-cache paths have editable comments. Generated
+mining data/configs are excluded from Git.
+
+The four separately enabled stages audit the source unknown CSV, score all valid
+rows with a frozen existing ProtT5 MLP, select a candidate review queue, and cache
+its verdict. No training is implemented. The audit reports observed counts,
+invalid-input reasons, duplicate full pairs, and row overlap against each/all
+labeled partitions under three identity rules. No fixed 835k count is assumed.
+
+Checkpoint inspection corrected the reference to draft 03: it has no export of
+the original ProtT5 MLP. The compatible existing export is from the historical
+ProtT5 notebook 01; a different user's checkpoint must match the validated
+architecture. Exact tensor keys/shapes, finite values and any recorded training
+split fingerprint are checked. Legacy missing split/cache signatures are
+reported and require external provenance review before selection.
+
+Scoring uses inference batches and the historical FP32 symmetric pair features;
+it retains valid overlapping and duplicate rows. Missing embedding keys abort
+without accepted partial score output. Scores have exactly the requested four
+columns, with full unordered pair IDs and a separate input/output manifest.
+Candidate selection requires strict `score < threshold` and excludes either
+protein in either role from **all** labeled partitions, including full-sequence
+and normalized/truncated-input identity collisions. Homology isolation is not
+claimed. `K=None` retains all eligible unique pairs; an optional cap keeps the
+lowest scores with deterministic tie breaking. Seed is retained without implying
+random sampling. Unknown status and absence of negative evidence are explicit;
+no binary label is assigned and no source split/cache is modified.
+
+The score manifest, candidate YAML configuration, and verdict record source,
+checkpoint, cache and split hashes. Changed files invalidate reuse; outputs
+refuse overwrite. The YAML uses JSON syntax, valid YAML 1.2. A single uncalibrated
+checkpoint does not supply per-pair confidence intervals, and no exponential
+tilting or semi-supervised training is claimed.
+
+Validation for this addition after proofreading: **58 regression tests passed**, all eight draft
+notebooks passed schema/syntax/shared-setup/default-switch checks, and original
+notebook code-cell preservation passed. The new notebook executed end to end
+with synthetic weights/vectors and rows: 11 source rows, 7 valid scored rows,
+4 low-score rows excluded for labeled protein overlap, and 2 unique candidates.
+The separate audit-only execution checks that default switches load no scorer
+or cache and create no mining output directory. These are software checks, not
+real unknown-PPI results. No Drive checkpoint, complete unknown CSV, or complete
+unknown-protein embedding cache was available here; real scoring remains a Colab
+run with the user's input paths.
+
+The user approved committing and publishing this mining addition after the
+proofreading review. Publication includes source notebooks/helpers, tests and
+documentation; Drive data, checkpoints, cached embeddings and synthetic outputs
+remain excluded. Earlier approved revisions were committed separately.
+
+### Predictor-loading proofreading follow-up
+
+The loader now uses the shared trusted PyTorch file loader and supports both
+authentic original exports: the `model_state_dict` checkpoint wrapper and bare
+weights. It rejects non-floating/nonfinite weights and conflicting encoder,
+normalization, pair-feature-order or flat/nested split-fingerprint metadata.
+Explicit conflicting cache normalization is rejected too. Pair features and
+logits must be finite before sigmoid, which could otherwise conceal infinite
+logits as finite scores. Duplicate consistency is checked across every scored
+copy, including copies above the mining cutoff; input/score hashes are verified
+again after selection finishes streaming.
+
+The new independent comparison tests execute only the historical normalization,
+dataset and predictor **definitions**, without running original setup, embedding,
+training or export cells. They save random frozen reference weights in both
+original formats, then verify exact CPU equality of normalized inputs, FP32 pair
+features and sigmoid scores between the original definitions and the mining
+adapter. Swapping partners preserves scores, and loaded parameters are frozen
+with dropout disabled. These tests verify format/behavior compatibility; they do
+not identify or validate the user's unavailable Drive checkpoint.
+
+Notebook prose and README instructions now name both supported export filenames
+and the validation rules. All action switches remain disabled. The user granted
+publication approval after the review and its checks finished.

@@ -47,6 +47,15 @@ The shared files are `splits/train.csv`, `splits/validation.csv`, and `splits/te
 
 Data, model weights, embeddings, and experiment outputs are intentionally external to this repository. The original notebook outputs were cleared; this edition has **not been rerun** to regenerate results.
 
+The [draft suite](drafting_code/README.md) adds shared split/cache checks and
+reviewable baseline/ablation workflows. Its new
+[unknown-pair mining notebook](drafting_code/07_mine_unknown_negatives.ipynb)
+audits your exported SNOOPPI unknown CSV, uses an existing frozen ProtT5 predictor,
+and optionally saves low-score, protein-disjoint **candidate** negatives under
+[`mined/`](mined/README.md). Counts come from your CSV rather than a fixed 835k
+assumption. It does not train a model, confirm negative biology, modify the
+labeled splits, or supply confidence intervals from a single checkpoint.
+
 ## Methods represented by the code
 
 The supervised task uses SNOOPPI **positive and negative pair labels**. Unknown-label pairs are not added to the ProtT5 supervised dataframe and must not be treated as confirmed negatives. The ProtT5 main path reloads the source positive/negative splits; its earlier exploratory filtered export is not used for training.
