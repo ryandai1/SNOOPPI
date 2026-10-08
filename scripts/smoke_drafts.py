@@ -103,6 +103,10 @@ executed_dir = smoke_root / "executed"
 executed_dir.mkdir()
 records = []
 for path in sorted((ROOT / "drafting_code").glob("*.ipynb")):
+    if path.name == "07_mine_unknown_negatives.ipynb":
+        # The inference-only mining workflow has independent source/checkpoint
+        # fixtures and is executed by scripts/smoke_mining.py.
+        continue
     nb = nbformat.read(path, 4)
     for cell in nb.cells:
         if cell.cell_type != "code":

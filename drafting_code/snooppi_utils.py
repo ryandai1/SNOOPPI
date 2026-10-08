@@ -362,7 +362,7 @@ def save_json(payload: object, path: Path) -> None:
 
 
 def _load_trusted_torch_file(path: Path):
-    """Load only caches created by the repository notebooks."""
+    """Load trusted cache/checkpoint exports with the shared PyTorch compatibility rule."""
 
     try:
         import torch

@@ -27,6 +27,10 @@ for path in sorted((ROOT / "drafting_code").glob("*.ipynb")):
                 "WRITE_NEGATIVE_CANDIDATES",
                 "TRAIN_MODEL",
                 "RUN_SCORING",
+                "WRITE_AUDIT",
+                "RUN_SELECTION",
+                "CACHE_VERDICT",
+                "CHECKPOINT_PROVENANCE_REVIEWED",
                 "ENABLE_LORA_SETUP",
             ):
                 if f"{switch} = True" in cell.source:
