@@ -1,0 +1,13 @@
+# Draft-suite execution and regression/synthetic smoke validation.
+# The frozen-cache paths do not need transformers, esm, peft or a PLM download.
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+matplotlib>=3.8
+scipy>=1.12
+torch>=2.4
+nbformat>=5.10
+nbclient>=0.10
+nbconvert>=7.16
+ipykernel>=6.29
+pytest>=8

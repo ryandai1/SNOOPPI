@@ -1,0 +1,12 @@
+# Local validation, external research data and generated artifacts.
+work/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+splits/
+splits_ablations/
+embeddings/
+checkpoints/
+tables/
+figures/
+raw/
