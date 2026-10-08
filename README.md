@@ -4,6 +4,26 @@ Research notebooks for binary protein–protein interaction classification using
 
 This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
 
+## Citing SNOOPPI
+
+If you use the SNOOPPI dataset, cite the published journal article:
+
+> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
+
+```bibtex
+@article{vincoff2026snooppi,
+  author  = {Vincoff, Sophia and Chatterjee, Pranam},
+  title   = {{SNOOPPI}: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions},
+  journal = {Bioinformatics},
+  year    = {2026},
+  pages   = {btag736},
+  doi     = {10.1093/bioinformatics/btag736},
+  url     = {https://doi.org/10.1093/bioinformatics/btag736}
+}
+```
+
+The earlier [OpenReview workshop version](https://openreview.net/forum?id=270Ej8S67w) is retained for provenance; use the *Bioinformatics* article above as the current citation.
+
 ## Notebook order
 
 | Order | Notebook | Role |
@@ -72,7 +92,7 @@ This check validates notebook structure, unchanged ordered code sources, empty s
 
 ## Upstream resources and attribution
 
-- [SNOOPPI dataset](https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI) and [upstream repository](https://github.com/sophievincoff/snooppi).
+- [SNOOPPI journal article](https://doi.org/10.1093/bioinformatics/btag736), [dataset](https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI), and [upstream repository](https://github.com/sophievincoff/snooppi).
 - [ProtT5 encoder](https://huggingface.co/Rostlab/prot_t5_xl_half_uniref50-enc).
 - [ESM-2 model used here](https://huggingface.co/facebook/esm2_t33_650M_UR50D) and [upstream ESM research code](https://github.com/facebookresearch/esm).
 - [ESM-C / EvolutionaryScale ESM](https://github.com/evolutionaryscale/esm).

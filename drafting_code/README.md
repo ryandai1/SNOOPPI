@@ -4,6 +4,15 @@ These are source-only review drafts for frozen-embedding baselines, ablations,
 and stricter PPI evaluation. The three historical notebooks in `../notebooks/`
 remain unchanged. No new research result or model ranking is claimed.
 
+## SNOOPPI citation
+
+Dataset use should cite the published article:
+
+> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
+
+The complete BibTeX entry and links to the dataset, upstream repository, and
+earlier OpenReview workshop version are in the [repository README](../README.md#citing-snooppi).
+
 ## What the earlier notebooks actually do
 
 The available ProtT5 notebook constructs an approximately **80/10/10 stratified
