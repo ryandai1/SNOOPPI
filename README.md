@@ -6,7 +6,7 @@ This repository documents the supplied experimental workflows. It does not intro
 
 ## Citing SNOOPPI
 
-If you use the SNOOPPI dataset, cite the published journal article:
+Cite the published journal article:
 
 > Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
 
