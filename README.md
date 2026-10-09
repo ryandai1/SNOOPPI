@@ -1,37 +1,44 @@
 # SNOOPPI
 
-**English** | [简体中文](README.zh-CN.md)
+**English** | [简体中文](docs/translations/README.zh-CN.md)
 
 Research notebooks for binary protein–protein interaction classification using frozen **ProtT5, ESM-2, and ESM-C** representations and a symmetric multilayer perceptron.
 
-This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
+[Dataset](https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI) · [Paper](https://doi.org/10.1093/bioinformatics/btag736) · [Reproducibility notes](docs/reference/reproducibility.md)
+
+> **Experiment status:** Data, model weights, embeddings, and experiment outputs are external to this repository. Saved notebook outputs were cleared; this edition has **not been rerun** to regenerate results.
+
+## Contents
+
+- [Start here](#start-here)
+- [Repository guide](#repository-guide)
+- [Notebook order](#notebook-order)
+- [Running the experiments](#running-the-experiments)
+- [Methods represented by the code](#methods-represented-by-the-code)
+- [Reading the metrics](#reading-the-metrics)
+- [Reproducibility and limitations](#reproducibility-and-limitations)
+- [Citing SNOOPPI](#citing-snooppi)
+- [Upstream resources and attribution](#upstream-resources-and-attribution)
 
 ## Start here
 
-- **Run the main experiments:** follow the [notebook order](#notebook-order) and [running instructions](#running-the-experiments) below. Prepare Google Colab with a GPU, mounted Google Drive, and the shared split CSVs.
-- **Audit existing splits or compare cached embeddings:** see the [draft experiment guide](drafting_code/README.md).
-- **Review unknown-pair candidates:** see the [mining artifact guide](mined/README.md); low model scores do not confirm negative interactions.
-- **Read the main workflow in Chinese:** see [简体中文说明](README.zh-CN.md). English remains the primary documentation language; the linked detailed guides are in English.
+| I want to… | Start with |
+| --- | --- |
+| Run the main experiments | [Notebook order](#notebook-order), then [running instructions](#running-the-experiments). Prepare Google Colab with a GPU, mounted Google Drive, and the shared split CSVs. |
+| Audit existing splits or compare cached embeddings | [Draft experiment guide](docs/guides/draft-experiments.md). |
+| Review unknown-pair candidates | [Mining artifact guide](docs/guides/unknown-pair-mining.md). Low model scores do not confirm negative interactions. |
+| Read the main workflow in Chinese | [简体中文说明](docs/translations/README.zh-CN.md). English remains the primary documentation language; the detailed guides are in English. |
 
-## Citing SNOOPPI
+## Repository guide
 
-Cite the published journal article:
-
-> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
-
-```bibtex
-@article{vincoff2026snooppi,
-  author  = {Vincoff, Sophia and Chatterjee, Pranam},
-  title   = {{SNOOPPI}: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions},
-  journal = {Bioinformatics},
-  year    = {2026},
-  pages   = {btag736},
-  doi     = {10.1093/bioinformatics/btag736},
-  url     = {https://doi.org/10.1093/bioinformatics/btag736}
-}
-```
-
-The earlier [OpenReview workshop version](https://openreview.net/forum?id=270Ej8S67w) is retained for provenance; use the *Bioinformatics* article above as the current citation.
+| Location | What you will find |
+| --- | --- |
+| [`notebooks/`](notebooks/README.md) | The three main ProtT5, ESM-2, and ESM-C experiments. |
+| [`drafting_code/`](drafting_code/README.md) | Draft audits, baselines, ablations, statistics, interpretability, and unknown-pair mining workflows, plus shared helpers. |
+| [`mined/`](mined/README.md) | A guide to mining outputs; this tracked folder is a scaffold, not a mined dataset. |
+| [`docs/`](docs/README.md) | Guides, reference notes, translations, and the notebook cleanup manifest. |
+| [`scripts/`](scripts/README.md) | Notebook validators and synthetic smoke checks. |
+| [`tests/`](tests/README.md) | Tests for the draft protocols and unknown-pair mining. |
 
 ## Notebook order
 
@@ -52,16 +59,26 @@ Each notebook separates setup, data, representations, training, evaluation, and 
 5. In notebooks 02 and 03, follow the numbered core sections using the same three CSVs. Review existing cache/checkpoint paths before starting or resuming. The preserved cells can overwrite existing experiment artifacts.
 6. Retain metrics, split hashes, resolved package/model/dataset versions, and configuration with each run. Compare results only after confirming identical evaluated pairs and metric definitions.
 
-The shared files are `splits/train.csv`, `splits/validation.csv`, and `splits/test.csv`. Their required input columns are `Partner_A_sequence`, `Partner_B_sequence`, and a binary `label`; the benchmark loaders also support deriving labels from `SNOOPPI_final_label`. Inspect each loader's checks before using a new dataset. Existing numeric labels take precedence in the benchmark notebooks.
+### Shared input files
 
-Data, model weights, embeddings, and experiment outputs are intentionally external to this repository. The original notebook outputs were cleared; this edition has **not been rerun** to regenerate results.
+Paths below are relative to the experiment directory on Drive, not this repository.
 
-The [draft suite](drafting_code/README.md) adds shared split/cache checks and
+| File | Purpose |
+| --- | --- |
+| `splits/train.csv` | Classifier training. |
+| `splits/validation.csv` | Checkpoint and classification-threshold selection. |
+| `splits/test.csv` | Held-out evaluation. |
+
+Required input columns are `Partner_A_sequence`, `Partner_B_sequence`, and a binary `label`; the benchmark loaders also support deriving labels from `SNOOPPI_final_label`. Inspect each loader's checks before using a new dataset. Existing numeric labels take precedence in the benchmark notebooks.
+
+### Additional workflows
+
+The [draft suite](docs/guides/draft-experiments.md) adds shared split/cache checks and
 reviewable baseline/ablation workflows. Its new
 [unknown-pair mining notebook](drafting_code/07_mine_unknown_negatives.ipynb)
 audits your exported SNOOPPI unknown CSV, uses an existing frozen ProtT5 predictor,
 and optionally saves low-score, protein-disjoint **candidate** negatives under
-[`mined/`](mined/README.md). Counts come from your CSV rather than a fixed 835k
+[`mined/`](docs/guides/unknown-pair-mining.md). Counts come from your CSV rather than a fixed 835k
 assumption. It does not train a model, confirm negative biology, modify the
 labeled splits, or supply confidence intervals from a single checkpoint.
 
@@ -97,7 +114,9 @@ Report class counts and prevalence alongside these metrics. The notebooks' sigmo
 
 ## Reproducibility and limitations
 
-The notebook explanations and [reproducibility notes](docs/reproducibility.md) describe preserved behavior, including differences in normalization, checkpoint recovery, and historical cells. Matching hidden widths does not match total head parameter counts when input dimensions differ. These workflows therefore do not isolate encoder identity under fully identical preprocessing and model capacity.
+This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
+
+The notebook explanations and [reproducibility notes](docs/reference/reproducibility.md) describe preserved behavior, including differences in normalization, checkpoint recovery, and historical cells. Matching hidden widths does not match total head parameter counts when input dimensions differ. These workflows therefore do not isolate encoder identity under fully identical preprocessing and model capacity.
 
 The [cleanup manifest](docs/cleanup_manifest.json) records source hashes, ordered code-cell hashes, and original-to-cleaned cell mappings. Run the lightweight format/preservation check from the repository root:
 
@@ -107,6 +126,31 @@ python scripts/validate_notebooks.py
 ```
 
 This check validates notebook structure, unchanged ordered code sources, empty saved outputs, and Python syntax where applicable. It does not download models, mount Drive, train classifiers, audit data leakage, or validate scientific results. Full runtime validation requires the Colab setup, original split files, model access, and the run sequence above. Notebook rendering and generated figures have not been visually revalidated in this preparation environment.
+
+## Citing SNOOPPI
+
+Cite the published journal article:
+
+> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
+
+<details>
+<summary>Copy BibTeX citation</summary>
+
+```bibtex
+@article{vincoff2026snooppi,
+  author  = {Vincoff, Sophia and Chatterjee, Pranam},
+  title   = {{SNOOPPI}: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions},
+  journal = {Bioinformatics},
+  year    = {2026},
+  pages   = {btag736},
+  doi     = {10.1093/bioinformatics/btag736},
+  url     = {https://doi.org/10.1093/bioinformatics/btag736}
+}
+```
+
+</details>
+
+The earlier [OpenReview workshop version](https://openreview.net/forum?id=270Ej8S67w) is retained for provenance; use the *Bioinformatics* article above as the current citation.
 
 ## Upstream resources and attribution
 

@@ -1,47 +1,54 @@
 # SNOOPPI
 
-[English](README.md) | **简体中文**
+[English](../../README.md) | **简体中文**
 
 本仓库提供用于蛋白质–蛋白质相互作用（PPI）二分类的研究笔记本，使用冻结的 **ProtT5、ESM-2 和 ESM-C** 表征，以及对称多层感知机（MLP）分类器。
 
 本文件是主 README 的简体中文版本，覆盖主要实验流程。**英文仍是项目的主要文档语言**；更详细的实验草案、产物说明和复现文档目前使用英文。
 
-本仓库记录已有的实验流程，并未提出新的蛋白质语言模型，也未确立最终的模型排名。笔记本整理保留了所有原始代码单元及其顺序，添加了编号说明，并清除了已保存的输出和临时元数据。已经调试过的实现和历史恢复单元均予以保留。
+[数据集](https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI) · [论文](https://doi.org/10.1093/bioinformatics/btag736) · [复现说明（英文）](../reference/reproducibility.md)
+
+> **实验状态：** 数据、模型权重、表征和实验输出均存放在仓库之外。已保存的笔记本输出已清除；本次整理版**尚未重新运行**以生成结果。
+
+## 目录
+
+- [从这里开始](#从这里开始)
+- [仓库导览](#仓库导览)
+- [笔记本顺序](#笔记本顺序)
+- [运行实验](#运行实验)
+- [代码所实现的方法](#代码所实现的方法)
+- [理解评估指标](#理解评估指标)
+- [可复现性与局限](#可复现性与局限)
+- [引用 SNOOPPI](#引用-snooppi)
+- [上游资源与署名](#上游资源与署名)
 
 ## 从这里开始
 
-- **运行主要实验：** 按下文的「笔记本顺序」和「运行实验」操作，准备带 GPU 的 Google Colab、已挂载的 Google Drive，以及共享的数据划分 CSV。
-- **审计已有划分或比较缓存表征：** 参阅[实验草案指南（英文）](drafting_code/README.md)。
-- **审查未知蛋白质对的候选结果：** 参阅[挖掘产物指南（英文）](mined/README.md)。模型低分不能确认某个蛋白质对为负例。
-- **查看主要英文文档：** 返回 [English README](README.md)。
+| 我想要…… | 从这里开始 |
+| --- | --- |
+| 运行主要实验 | 按[笔记本顺序](#笔记本顺序)和[运行实验](#运行实验)操作，准备带 GPU 的 Google Colab、已挂载的 Google Drive，以及共享的数据划分 CSV。 |
+| 审计已有划分或比较缓存表征 | [实验草案指南（英文）](../guides/draft-experiments.md)。 |
+| 审查未知蛋白质对的候选结果 | [挖掘产物指南（英文）](../guides/unknown-pair-mining.md)。模型低分不能确认某个蛋白质对为负例。 |
+| 查看主要英文文档 | [English README](../../README.md)。 |
 
-## 引用 SNOOPPI
+## 仓库导览
 
-请引用已发表的期刊论文，保留原始英文题名：
-
-> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
-
-```bibtex
-@article{vincoff2026snooppi,
-  author  = {Vincoff, Sophia and Chatterjee, Pranam},
-  title   = {{SNOOPPI}: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions},
-  journal = {Bioinformatics},
-  year    = {2026},
-  pages   = {btag736},
-  doi     = {10.1093/bioinformatics/btag736},
-  url     = {https://doi.org/10.1093/bioinformatics/btag736}
-}
-```
-
-此前的 [OpenReview 研讨会版本](https://openreview.net/forum?id=270Ej8S67w)保留用于追溯来源；当前引用请使用上面的 *Bioinformatics* 论文。
+| 位置 | 内容 |
+| --- | --- |
+| [`notebooks/`](../../notebooks/README.md) | ProtT5、ESM-2 和 ESM-C 的三个主要实验。 |
+| [`drafting_code/`](../../drafting_code/README.md) | 审计、基线、消融、统计、可解释性和未知蛋白质对挖掘的实验草案，以及共享辅助模块。 |
+| [`mined/`](../../mined/README.md) | 挖掘产物指南；仓库中的这个文件夹是目录框架，不是已生成的挖掘数据集。 |
+| [`docs/`](../README.md) | 使用指南、参考说明、翻译文档和笔记本整理清单。 |
+| [`scripts/`](../../scripts/README.md) | 笔记本验证工具和合成数据冒烟检查。 |
+| [`tests/`](../../tests/README.md) | 实验草案协议和未知蛋白质对挖掘的测试。 |
 
 ## 笔记本顺序
 
 | 顺序 | 笔记本 | 用途 |
 | --- | --- | --- |
-| 01 | [ProtT5 预测器](notebooks/01_prott5_predictor.ipynb) | 加载带标签的 SNOOPPI 蛋白质对，建立共享数据划分，计算蛋白质表征，并训练和评估分类器。 |
-| 02 | [ESM-2 基准实验](notebooks/02_esm2_benchmark.ipynb) | 加载已有的数据划分 CSV，评估 ESM-2 表征。 |
-| 03 | [ESM-C 基准实验](notebooks/03_esmc_benchmark.ipynb) | 加载相同的数据划分文件，审计原始序列和蛋白质对的重叠，并支持表征计算及训练轮次级别的恢复。 |
+| 01 | [ProtT5 预测器](../../notebooks/01_prott5_predictor.ipynb) | 加载带标签的 SNOOPPI 蛋白质对，建立共享数据划分，计算蛋白质表征，并训练和评估分类器。 |
+| 02 | [ESM-2 基准实验](../../notebooks/02_esm2_benchmark.ipynb) | 加载已有的数据划分 CSV，评估 ESM-2 表征。 |
+| 03 | [ESM-C 基准实验](../../notebooks/03_esmc_benchmark.ipynb) | 加载相同的数据划分文件，审计原始序列和蛋白质对的重叠，并支持表征计算及训练轮次级别的恢复。 |
 
 每个笔记本通过编号章节组织环境设置、数据、表征、训练、评估和导出。历史、可选和恢复章节均在原位置标注。这些笔记本仍是独立实验，没有合并为同一个运行环境。
 
@@ -54,11 +61,21 @@
 5. 在笔记本 02 和 03 中，按编号执行主要章节，并使用同样的三个 CSV。开始或恢复实验前，请检查缓存和检查点路径。保留的原始单元可能覆盖已有实验产物。
 6. 为每次实验保留指标、划分文件哈希、实际使用的软件包／模型／数据集版本和配置。确认评估使用的蛋白质对与指标定义一致后，再比较结果。
 
-共享文件为 `splits/train.csv`、`splits/validation.csv` 和 `splits/test.csv`。必需的输入列为 `Partner_A_sequence`、`Partner_B_sequence` 和二分类 `label`；基准实验的加载器也支持从 `SNOOPPI_final_label` 推导标签。使用新数据集前，请检查对应加载器的验证逻辑。在基准实验笔记本中，已有的数值标签优先使用。
+### 共享输入文件
 
-数据、模型权重、表征和实验输出均存放在仓库之外。原始笔记本输出已清除；本次整理版**尚未重新运行**以生成结果。
+以下路径相对于 Drive 上的实验目录，而非本仓库。
 
-[实验草案套件（英文）](drafting_code/README.md)提供共享划分／缓存检查，以及便于审查的基线和消融流程。其中的[未知蛋白质对挖掘笔记本](drafting_code/07_mine_unknown_negatives.ipynb)会审计你导出的 SNOOPPI 未知标签 CSV，使用已有且冻结的 ProtT5 预测器，并可选择将低分、与带标签划分中的蛋白质无身份重叠的**候选**负例保存到 [`mined/`](mined/README.md)。数量以你的 CSV 为准，而非假定固定为 83.5 万条。此流程不训练模型、不确认负例的生物学真实性、不修改带标签的数据划分，也不基于单个检查点提供置信区间。
+| 文件 | 用途 |
+| --- | --- |
+| `splits/train.csv` | 分类器训练。 |
+| `splits/validation.csv` | 检查点和分类阈值选择。 |
+| `splits/test.csv` | 留出评估。 |
+
+必需的输入列为 `Partner_A_sequence`、`Partner_B_sequence` 和二分类 `label`；基准实验的加载器也支持从 `SNOOPPI_final_label` 推导标签。使用新数据集前，请检查对应加载器的验证逻辑。在基准实验笔记本中，已有的数值标签优先使用。
+
+### 扩展流程
+
+[实验草案套件（英文）](../guides/draft-experiments.md)提供共享划分／缓存检查，以及便于审查的基线和消融流程。其中的[未知蛋白质对挖掘笔记本](../../drafting_code/07_mine_unknown_negatives.ipynb)会审计你导出的 SNOOPPI 未知标签 CSV，使用已有且冻结的 ProtT5 预测器，并可选择将低分、与带标签划分中的蛋白质无身份重叠的**候选**负例保存到 [`mined/`](../guides/unknown-pair-mining.md)。数量以你的 CSV 为准，而非假定固定为 83.5 万条。此流程不训练模型、不确认负例的生物学真实性、不修改带标签的数据划分，也不基于单个检查点提供置信区间。
 
 ## 代码所实现的方法
 
@@ -92,9 +109,11 @@ ProtT5 对蛋白质对的行进行分层随机划分，比例约为 **80% 训练
 
 ## 可复现性与局限
 
-笔记本说明和[复现说明（英文）](docs/reproducibility.md)记录了保留的行为，包括序列规范化、检查点恢复和历史单元之间的差异。输入维度不同时，即使隐藏层宽度一致，分类头的总参数量也不同。因此，这些流程并未在完全相同的预处理和模型容量条件下单独比较编码器本身的影响。
+本仓库记录已有的实验流程，并未提出新的蛋白质语言模型，也未确立最终的模型排名。笔记本整理保留了所有原始代码单元及其顺序，添加了编号说明，并清除了已保存的输出和临时元数据。已经调试过的实现和历史恢复单元均予以保留。
 
-[整理清单](docs/cleanup_manifest.json)记录源文件哈希、按顺序排列的代码单元哈希，以及原始与整理后单元的对应关系。在仓库根目录运行轻量级格式／代码保留检查：
+笔记本说明和[复现说明（英文）](../reference/reproducibility.md)记录了保留的行为，包括序列规范化、检查点恢复和历史单元之间的差异。输入维度不同时，即使隐藏层宽度一致，分类头的总参数量也不同。因此，这些流程并未在完全相同的预处理和模型容量条件下单独比较编码器本身的影响。
+
+[整理清单](../cleanup_manifest.json)记录源文件哈希、按顺序排列的代码单元哈希，以及原始与整理后单元的对应关系。在仓库根目录运行轻量级格式／代码保留检查：
 
 ```bash
 python -m pip install nbformat
@@ -102,6 +121,31 @@ python scripts/validate_notebooks.py
 ```
 
 此检查验证笔记本结构、代码源文本及顺序未发生变化、已保存输出为空，以及适用单元的 Python 语法。它不下载模型、不挂载 Drive、不训练分类器、不审计数据泄漏，也不验证科学结果。完整运行验证需要 Colab 环境、原始划分文件、模型访问权限和上述执行顺序。本次准备环境中尚未重新进行笔记本渲染和生成图表的视觉验证。
+
+## 引用 SNOOPPI
+
+请引用已发表的期刊论文，保留原始英文题名：
+
+> Vincoff S, Chatterjee P. **SNOOPPI: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions.** *Bioinformatics*. 2026; btag736. [https://doi.org/10.1093/bioinformatics/btag736](https://doi.org/10.1093/bioinformatics/btag736)
+
+<details>
+<summary>复制 BibTeX 引用</summary>
+
+```bibtex
+@article{vincoff2026snooppi,
+  author  = {Vincoff, Sophia and Chatterjee, Pranam},
+  title   = {{SNOOPPI}: A Sequence-Normalized Database of On- and Off-Target Protein-Protein Interactions},
+  journal = {Bioinformatics},
+  year    = {2026},
+  pages   = {btag736},
+  doi     = {10.1093/bioinformatics/btag736},
+  url     = {https://doi.org/10.1093/bioinformatics/btag736}
+}
+```
+
+</details>
+
+此前的 [OpenReview 研讨会版本](https://openreview.net/forum?id=270Ej8S67w)保留用于追溯来源；当前引用请使用上面的 *Bioinformatics* 论文。
 
 ## 上游资源与署名
 
