@@ -521,7 +521,10 @@ def summarize_predictions(
     """Metrics requested for strict, imbalanced PPI evaluation."""
 
     labels = np.asarray(labels, dtype=np.int8)
-    probabilities = np.clip(np.asarray(probabilities, dtype=float), 1e-7, 1 - 1e-7)
+    probabilities = np.asarray(probabilities, dtype=float)
+    if not np.isfinite(probabilities).all() or ((probabilities < 0) | (probabilities > 1)).any():
+        raise ValueError("Probabilities must be finite and in [0, 1]")
+    # Preserve rankings and threshold decisions; log_loss clips internally.
     predictions = probabilities >= threshold
     positive_ap = average_precision_score(labels, probabilities)
     negative_ap = average_precision_score(1 - labels, 1 - probabilities)
@@ -854,3 +857,4 @@ def prepare_outputs(paths):
     check_output_paths(paths)
     for path in paths:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
+
