@@ -34,6 +34,7 @@ Research notebooks for binary protein–protein interaction classification using
 | Location | What you will find |
 | --- | --- |
 | [`notebooks/`](notebooks/README.md) | The three main ProtT5, ESM-2, and ESM-C experiments. |
+| [`notebooks/ablations/`](notebooks/ablations/README.md) | Original ProtT5 snapshot and U/Z/O/B-only ESM preprocessing ablations; cache migration guide. |
 | [`drafting_code/`](drafting_code/README.md) | Draft audits, baselines, ablations, statistics, interpretability, and unknown-pair mining workflows, plus shared helpers. |
 | [`mined/`](mined/README.md) | A guide to mining outputs; this tracked folder is a scaffold, not a mined dataset. |
 | [`docs/`](docs/README.md) | Guides, reference notes, translations, and the notebook cleanup manifest. |
@@ -54,7 +55,7 @@ Each notebook separates setup, data, representations, training, evaluation, and 
 
 1. Open a notebook in **Google Colab with a GPU**. Use a fresh runtime for each encoder and its original dependency setup cells. This ESM-2 notebook uses Hugging Face Transformers; ESM-C uses EvolutionaryScale's `esm` package with its own version constraints.
 2. Mount Google Drive and verify that `/content/drive/MyDrive` is actually mounted before writing artifacts. The default experiment directory is `/content/drive/MyDrive/SNOOPPI`.
-3. If the original partition CSVs already exist, preserve them and start with notebook 02 or 03. Otherwise use notebook 01 to create them. Recreating partitions from a newer unpinned dataset revision need not reproduce the original experiment.
+3. If the original partition CSVs already exist, all main notebooks reuse them. The updated notebook 01 rebuilds ProtT5 embeddings under the broad normalization rule in a separate run directory. If no CSVs exist, notebook 01 creates them. Recreating partitions from a newer unpinned dataset revision need not reproduce the original experiment.
 4. For the documented single seeded ProtT5 run, execute sections **03–08**, skip the historical first training loop in **09**, then execute **10–12**. Section 03 requires the `datasets` package; install it with the original setup cell in section 01 if needed. Sections 01–02 and 13–17 contain exploration, diagnostics, archives, and recovery/export utilities; read their notes before running them.
 5. In notebooks 02 and 03, follow the numbered core sections using the same three CSVs. Review existing cache/checkpoint paths before starting or resuming. The preserved cells can overwrite existing experiment artifacts.
 6. Retain metrics, split hashes, resolved package/model/dataset versions, and configuration with each run. Compare results only after confirming identical evaluated pairs and metric definitions.
@@ -84,9 +85,9 @@ labeled splits, or supply confidence intervals from a single checkpoint.
 
 ## Methods represented by the code
 
-The supervised task uses SNOOPPI **positive and negative pair labels**. Unknown-label pairs are not added to the ProtT5 supervised dataframe and must not be treated as confirmed negatives. The ProtT5 main path reloads the source positive/negative splits; its earlier exploratory filtered export is not used for training.
+The supervised task uses SNOOPPI **positive and negative pair labels**. Unknown-label pairs are not added to the ProtT5 supervised dataframe and must not be treated as confirmed negatives. The ProtT5 main path reuses shared CSVs, or loads the source positive/negative splits when none exist; its earlier exploratory filtered export is not used for training.
 
-ProtT5 creates a stratified random split of pair rows, approximately **80% training / 10% validation / 10% test**, with split seed **44**. ESM-2 and ESM-C reuse the exported files. This procedure does not establish protein-disjoint or sequence-cluster-disjoint evaluation. ESM-C reports raw overlap but does not repair it; a pair-overlap warning permits execution to continue.
+When shared CSVs are absent, ProtT5 creates a stratified random split of pair rows, approximately **80% training / 10% validation / 10% test**, with split seed **44**. ESM-2 and ESM-C reuse the exported files. This procedure does not establish protein-disjoint or sequence-cluster-disjoint evaluation. ESM-C reports raw overlap but does not repair it; a pair-overlap warning permits execution to continue.
 
 | Property | ProtT5 | ESM-2 | ESM-C (default) |
 | --- | --- | --- | --- |
@@ -95,6 +96,8 @@ ProtT5 creates a stratified random split of pair rows, approximately **80% train
 | Symmetric pair dimension | 3,072 | 3,840 | 3,456 |
 | Sequence limit | First 1,024 characters after normalization | First 1,024 residues after normalization | First 1,024 residues after normalization |
 | Pooling | Mean, excluding padding and final EOS | Residue mean, excluding BOS/EOS/padding | Explicit residue-position mean, excluding BOS/EOS/padding and retaining `X` |
+
+All main notebooks uppercase sequences, remove literal spaces, replace every character outside the 20 canonical amino-acid letters with `X`, and truncate to 1,024 residues. [Preprocessing ablations](notebooks/ablations/README.md) retain the original U/Z/O/B-only rule.
 
 All encoders are frozen. For protein embeddings `a` and `b`, pair features concatenate **`a + b`, `abs(a - b)`, and `a * b`**. Swapping the partners leaves this representation unchanged.
 
@@ -114,9 +117,9 @@ Report class counts and prevalence alongside these metrics. The notebooks' sigmo
 
 ## Reproducibility and limitations
 
-This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The cleanup preserves every original code cell and its order, adds numbered explanations, and removes saved outputs and transient notebook metadata. Debugged implementations and historical recovery cells remain intact.
+This repository documents the supplied experimental workflows. It does not introduce a new protein language model or establish a final model ranking. The historical cleanup preserved original code cells and removed saved outputs and transient metadata. The normalization update keeps an exact ProtT5 snapshot in `notebooks/ablations/`; its main notebook now uses broad normalization and isolated artifacts. Main ESM executable cells remain unchanged. Debugged implementations and historical recovery cells remain intact.
 
-The notebook explanations and [reproducibility notes](docs/reference/reproducibility.md) describe preserved behavior, including differences in normalization, checkpoint recovery, and historical cells. Matching hidden widths does not match total head parameter counts when input dimensions differ. These workflows therefore do not isolate encoder identity under fully identical preprocessing and model capacity.
+The notebook explanations and [reproducibility notes](docs/reference/reproducibility.md) describe preserved behavior, including cache migration, checkpoint recovery, and historical cells. Matching hidden widths does not match total head parameter counts when input dimensions differ. These workflows therefore do not isolate encoder identity under identical model capacity.
 
 The [cleanup manifest](docs/cleanup_manifest.json) records source hashes, ordered code-cell hashes, and original-to-cleaned cell mappings. Run the lightweight format/preservation check from the repository root:
 
@@ -125,7 +128,7 @@ python -m pip install nbformat
 python scripts/validate_notebooks.py
 ```
 
-This check validates notebook structure, unchanged ordered code sources, empty saved outputs, and Python syntax where applicable. It does not download models, mount Drive, train classifiers, audit data leakage, or validate scientific results. Full runtime validation requires the Colab setup, original split files, model access, and the run sequence above. Notebook rendering and generated figures have not been visually revalidated in this preparation environment.
+This check validates all main/ablation notebook structures, empty saved outputs, and Python syntax; it also verifies unchanged original code sources against the archived ProtT5 and main ESM notebooks. It does not download models, mount Drive, train classifiers, audit data leakage, or validate scientific results. Full runtime validation requires the Colab setup, original split files, model access, and the run sequence above. Notebook rendering and generated figures have not been visually revalidated in this preparation environment.
 
 ## Citing SNOOPPI
 

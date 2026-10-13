@@ -1,15 +1,16 @@
 # Reproducibility notes
 
-These notes describe the supplied code; no listed limitation was silently fixed during cleanup.
+These notes describe the current notebooks, including the 2026-10-13 normalization update. See [ablation and cache migration instructions](../../notebooks/ablations/README.md).
 
 ## Preserved implementation details
 
 | Area | Observed behavior and consequence |
 | --- | --- |
-| Data selection | ProtT5 builds the supervised dataframe from the source positive/negative splits, bypassing its earlier exploratory filtered dataset. Do not describe those exploratory filters as training preprocessing. |
+| Data selection | ProtT5 reuses existing shared CSVs; if none exist, it builds the supervised dataframe from the source positive/negative splits, bypassing its earlier exploratory filtered dataset. Do not describe those exploratory filters as training preprocessing. |
 | Split isolation | Pair-row stratification does not guarantee unique unordered pairs or disjoint proteins across partitions. ESM-C audits raw overlaps but only warns about pair overlap. Normalized/truncated collisions and sequence clusters require separate checks. |
 | Label provenance | Benchmark notebooks prefer an existing numeric `label`. Its agreement with the original SNOOPPI label is not established by that preference. Keep original label provenance. |
-| Preprocessing | ProtT5 uppercases, replaces `U/Z/O/B` with `X`, and truncates. ESM-2 and ESM-C additionally remove literal spaces and map every noncanonical character to `X`. Text normalization is not a biological PTM parser. |
+| Preprocessing | All main notebooks uppercase, remove literal spaces, map every noncanonical character to `X`, and truncate. The exact original ProtT5 snapshot and two ESM ablations retain uppercase plus `U/Z/O/B` → `X` only, including original space handling. Text normalization is not a biological PTM parser. |
+| Cache migration | Rebuild main ProtT5 and both ESM U/Z/O/B-only ablation caches. Existing main ESM broad-rule caches remain compatible. New caches and classifier artifacts use separate directories; never mix policies. |
 | Shared frozen embeddings | Caching embeddings for all partitions does not train the frozen encoder on their interaction labels. The split itself and downstream model-selection protocol still need validation. |
 | Model capacity | Encoder dimensions differ; the first classifier layer therefore has different parameter counts despite matching hidden widths. |
 | ProtT5 training | Two loops remain. The later seeded reset creates a new classifier and optimizer and records the history used by export. Skip the earlier loop for the documented single-run path. |

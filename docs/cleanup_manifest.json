@@ -227,7 +227,8 @@
           "cleaned_index": 59
         }
       ],
-      "code_preservation": "exact source strings and original code-cell order"
+      "code_preservation": "exact source strings and original code-cell order",
+      "preserved_path": "notebooks/ablations/01_prott5_predictor_uzob_original.ipynb"
     },
     {
       "path": "notebooks/02_esm2_benchmark.ipynb",
