@@ -381,7 +381,7 @@ def test_original_notebook_exports_and_predictions_match_loader(mining, wrapped)
     It compares random frozen weights exported in both authentic formats.
     """
     original = nbformat.read(
-        Path(__file__).resolve().parents[1] / "notebooks/01_prott5_predictor.ipynb", 4
+        Path(__file__).resolve().parents[1] / "notebooks/ablations/01_prott5_predictor_uzob_original.ipynb", 4
     )
     namespace = {
         "nn": torch.nn,

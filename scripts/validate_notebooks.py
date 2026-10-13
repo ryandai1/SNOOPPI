@@ -1,4 +1,4 @@
-"""Validate the cleaned notebook format and preservation manifest; no model runs."""
+"""Validate main/ablation notebook sources and historical preservation; no model runs."""
 
 import ast
 import hashlib
@@ -12,14 +12,19 @@ ROOT = Path(__file__).resolve().parents[1]
 manifest = json.loads((ROOT / "docs/cleanup_manifest.json").read_text())
 
 for item in manifest["notebooks"]:
-    path = ROOT / item["path"]
+    path = ROOT / item.get("preserved_path", item["path"])
     notebook = nbformat.read(path, as_version=4)
     nbformat.validate(notebook)
     code_cells = [cell for cell in notebook.cells if cell.cell_type == "code"]
     hashes = [hashlib.sha256(cell.source.encode()).hexdigest() for cell in code_cells]
     if hashes != item["original_code_cell_sha256_in_order"]:
         raise ValueError(f"Code source or order differs from the preserved original: {path.name}")
+    print(f"PASS historical source preservation: {path.relative_to(ROOT)}")
 
+for path in sorted((ROOT / "notebooks").rglob("*.ipynb")):
+    notebook = nbformat.read(path, as_version=4)
+    nbformat.validate(notebook)
+    code_cells = [cell for cell in notebook.cells if cell.cell_type == "code"]
     shell_cells = 0
     for index, cell in enumerate(code_cells, start=1):
         if cell.outputs or cell.execution_count is not None:
@@ -29,7 +34,7 @@ for item in manifest["notebooks"]:
             shell_cells += 1
             continue
         ast.parse(cell.source, filename=f"{path.name}:code-cell-{index}")
-    print(f"PASS {path.name}: {len(code_cells)} code cells preserved; "
+    print(f"PASS {path.name}: {len(code_cells)} code cells validated; "
           f"{shell_cells} IPython/shell cells excluded from Python AST parsing")
 
 print("Static validation only. Full Colab execution and data/result audits were not performed.")

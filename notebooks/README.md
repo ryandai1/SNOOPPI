@@ -10,4 +10,4 @@
 
 Run in separate Google Colab GPU runtimes with mounted Drive and each encoder's own dependency setup. If original split CSVs already exist, preserve them and start with 02 or 03. Follow the root README's specific section order for the single seeded ProtT5 run.
 
-These notebooks preserve their original code cells. Saved outputs are cleared; this edition has not been rerun to regenerate results. For split audits, cached-embedding baselines, and additional workflows, see the [draft experiments](../drafting_code/README.md).
+The main notebooks now share broad normalization: uppercase, remove literal spaces, and map every noncanonical character to `X`. The updated ProtT5 run reads existing shared splits and uses a new artifact directory. ESM-2/ESM-C executable cells are unchanged. See [normalization ablations and cache migration](ablations/README.md) for the exact original ProtT5 copy and two new ESM ablations. Saved outputs are cleared; this edition has not been rerun to regenerate results. For split audits, cached-embedding baselines, and additional workflows, see the [draft experiments](../drafting_code/README.md).
