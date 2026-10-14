@@ -7,9 +7,9 @@ This folder contains the draft notebooks and their shared Python helpers. These 
 | Notebook | Purpose |
 | --- | --- |
 | [00 — Data audit](00_data_audit_and_protocol.ipynb) | Inspect existing split CSVs, overlap, and preprocessing. |
-| [01 — Classical baselines](01_classical_embedding_baselines.ipynb) | Compare classical classifiers using cached frozen embeddings. |
+| [01 — Classical baselines](01_classical_embedding_baselines.ipynb) | Run the random-forest baseline on the same cached features as the MLP. |
 | [02 — Strict splits](02_strict_splits_and_negative_sampling.ipynb) | Preview stricter partitions and candidate sampling protocols. |
-| [03 — ProtT5 ablations](03_prott5_ablation_matrix.ipynb) | Compare pair-feature operators and dimensions. |
+| [03 — ProtT5 ablations](03_prott5_ablation_matrix.ipynb) | Inspect pair-feature operators and projected dimensions using logistic regression; not MLP ablations. |
 | [04 — Calibration and statistics](04_calibration_and_statistics.ipynb) | Review saved predictions and matched comparisons. |
 | [05 — Neural architecture drafts](05_neural_architecture_drafts.ipynb) | Explore pooled-cache neural heads and separate architecture scaffolds. |
 | [06 — Interpretability](06_mutation_and_interface_interpretability.ipynb) | Review mutation and interface annotations with a frozen scorer. |
@@ -18,3 +18,6 @@ This folder contains the draft notebooks and their shared Python helpers. These 
 The filenames give notebook identifiers, not a top-to-bottom execution order. Follow the [guide's run order](../docs/guides/draft-experiments.md#run-order), setup, and validation instructions before executing. Action switches are disabled by default; unknown candidates are not confirmed negatives.
 
 Shared helpers are `snooppi_utils.py`, `snooppi_protocol.py`, and `snooppi_mining.py`. Dependencies remain in [`requirements.txt`](requirements.txt). Keep this folder path when cloning: notebooks and validation tools use it to locate helpers and drafts.
+
+
+See the focused [RF baseline and ablation guide](../docs/guides/rf-baseline-and-ablations.md) for the current 01 protocol and the limitations of 03.

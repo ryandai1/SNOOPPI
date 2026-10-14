@@ -94,7 +94,7 @@ or the binary split CSV), without inventing assay evidence.
 
 The suite loads your existing caches; it never downloads encoders, recomputes
 embeddings, overwrites caches or silently drops proteins with missing embeddings.
-All three are selected by default in 01 and 03. A narrower comparison requires
+Notebook 01 defaults to ProtT5; 03 selects all three encoders. A different comparison requires
 an explicit `ENCODERS_TO_RUN` list. Paths and specifications are centralized in
 `snooppi_utils.py`:
 
@@ -244,8 +244,10 @@ scoring. Review checkpoint training provenance and coordinate conventions too.
 All write/training/scoring/LoRA switches default to false. Setup creates no output
 directories. Use a unique `RUN_TAG`. New outputs refuse overwrite. 01/03/05 use
 `QUICK_MODE=True` for development with seed 44 and at most 5000 training rows;
-01/03 use the same stratified subset. Reporting uses full training and seeds
-41–45. Quick-mode development results are explicitly flagged; 04 excludes them
+01/03 use the same stratified subset. The revised RF notebook 01 reports seeds
+44–46 and uses validation-only quick mode. Notebook 03 retains full-training seeds
+41–45 and its quick mode still evaluates test data. See the focused
+[RF and ablation guide](rf-baseline-and-ablations.md) before running these experiments. Quick-mode development results are explicitly flagged; 04 excludes them
 unless `INCLUDE_DEVELOPMENT_RUNS=True` is deliberately set.
 
 Predictions include full and normalized pair identities, original row order,
@@ -289,3 +291,4 @@ scientific performance. `smoke_mining.py` separately executes 07 with artificial
 weights, vectors and pairs, without fitting any model or downloading any PLM.
 Neither smoke test establishes actual unknown-pair counts, negative evidence or
 performance. Review validation details in the [draft revision notes](../reference/draft-revision-notes.md).
+
