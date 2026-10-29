@@ -134,6 +134,18 @@ def main():
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--partial-audit', action='store_true')
     args = p.parse_args()
+    try:
+        execute(args)
+    except Exception as exc:
+        if args.output.exists() and not (args.output/'frozen_splits.json').exists():
+            state = args.output/'RUN_STATE.json'
+            # Never replace an existing attempt's state when overwrite protection fired.
+            if not str(exc).startswith('Refusing overwrite'):
+                state.write_text(json.dumps({'status':'BLOCKED','reason':str(exc),'stage':'PREPARATION'},indent=2)+'\n')
+        raise
+
+
+def execute(args):
     assert not args.output.exists(), 'Refusing overwrite; preserve every attempt'
     paths = [args.source / (n + '.csv') for n in NAMES]
     if not args.partial_audit:
@@ -143,13 +155,21 @@ def main():
     args.output.mkdir(parents=True)
     def save(name, value):
         (args.output/name).write_text(json.dumps(value, indent=2, sort_keys=True)+'\n')
+    save('protocol.json', {'version':2,'identity':0.3,'coverage':0.8,'coverage_mode':0,
+        'cluster_mode':1,'single_step':True,'max_sequences_per_query':1000,'sensitivity':7.5,
+        'threads':3,'seed':44,'group_fractions':[0.8,0.1,0.1],
+        'minimum_per_class':50,'mmseqs_timeout_seconds':3600,
+        'conflicts':'quarantine without relabeling','invalid_sequences':'quarantine without sanitization'})
     save('source_manifest.json', {f.name: {'sha256': file_hash(f), 'bytes': f.stat().st_size} for f in paths})
     d = pd.concat([pd.read_csv(f).assign(original_split=f.stem, source_row=lambda x: range(len(x))) for f in paths], ignore_index=True)
     valid = pd.Series(True, index=d.index)
     for c in [A,B]:
         valid &= d[c].map(lambda s: isinstance(s,str) and bool(re.fullmatch("[A-Za-z ]+",s)) and bool(s.strip()))
     d[~valid].to_csv(args.output/"invalid_sequences.csv", index=False)
-    clean, conflicts, collisions, report = audit(d[valid])
+    valid_rows=d[valid].copy()
+    valid_rows['full_pair_id']=[pair_id(a,b) for a,b in zip(valid_rows[A],valid_rows[B])]
+    valid_rows[valid_rows.full_pair_id.duplicated(keep=False)].to_csv(args.output/'duplicate_rows.csv',index=False)
+    clean, conflicts, collisions, report = audit(valid_rows)
     report["source_rows_before_sequence_filter"] = len(d)
     report["invalid_sequence_rows_quarantined"] = int((~valid).sum())
     report['partial_only'] = args.partial_audit
@@ -165,7 +185,8 @@ def main():
     assert shutil.which('mmseqs'), 'MMseqs2 unavailable; do not substitute identity-only clustering'
     version = subprocess.check_output(['mmseqs','version'], text=True).strip()
     cmd = ['mmseqs','easy-cluster',str(fasta),str(args.output/'mmseqs'),str(args.output/'tmp'),
-           '--min-seq-id','0.3','-c','0.8','--cov-mode','0','--cluster-mode','1','-s','7.5','--threads','4']
+           '--min-seq-id','0.3','-c','0.8','--cov-mode','0','--cluster-mode','1','--single-step-clustering','1','--max-seqs','1000',
+           '-s','7.5','--threads','3']
     save('clustering.json', {'version':version,'command':cmd,'fasta_sha256':file_hash(fasta)})
     with open(args.output/'mmseqs.log','w') as log:
         subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=3600)
@@ -181,8 +202,13 @@ def main():
     validate(assigned,clusters)
     for n in NAMES:
         assigned[assigned.split == n].to_csv(args.output/(n+'.csv'),index=False)
+    save('split_provenance.json', {'mapping_sha256':file_hash(args.output/'mmseqs2_clusters.csv'),
+        'clustering_sha256':file_hash(args.output/'clustering.json'),
+        'source_manifest_sha256':file_hash(args.output/'source_manifest.json'),
+        'pipeline_sha256':file_hash(Path(__file__)),
+        'protocol_sha256':file_hash(args.output/'protocol.json')})
     save('frozen_splits.json', {n: file_hash(args.output/(n+'.csv')) for n in NAMES})
-    save('RUN_STATE.json',{'status':'SPLITS_READY','stage':'C','next_action':'Validate cache provenance and implement registered training batch'})
+    save('RUN_STATE.json',{'status':'SPLITS_READY','stage':'C','next_action':'Validate cache provenance and run train.py fit before train.py evaluate'})
 
 if __name__ == '__main__':
     main()
