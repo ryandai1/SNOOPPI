@@ -1,0 +1,10 @@
+{
+  "test.csv": {
+    "bytes": 5574700,
+    "sha256": "ff23db8efbc30fc9f0021227f478bb506a3c6a7028470acfe5701ae4d3c2580c"
+  },
+  "validation.csv": {
+    "bytes": 5557519,
+    "sha256": "d6d1177ec417c8bd6517da7618b17fcfb79273758abe8bc6b22c37fdac19d21b"
+  }
+}
