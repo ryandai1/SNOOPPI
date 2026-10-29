@@ -1,0 +1,15 @@
+{
+  "conflict_rows_quarantined": 0,
+  "conflicting_full_pairs": 0,
+  "eligible_class_counts": {
+    "0.0": 1023,
+    "1.0": 6445
+  },
+  "eligible_pairs": 7468,
+  "input_collision_pairs_quarantined": 213,
+  "invalid_sequence_rows_quarantined": 120,
+  "partial_only": true,
+  "same_label_duplicate_rows_removed": 0,
+  "source_rows": 7681,
+  "source_rows_before_sequence_filter": 7801
+}
