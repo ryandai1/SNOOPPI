@@ -1,0 +1,9 @@
+test_assignment_keeps_components_and_both_classes (test_prepare.ProtocolTests.test_assignment_keeps_components_and_both_classes) ... ok
+test_both_partners_and_truncated_inputs_link_components (test_prepare.ProtocolTests.test_both_partners_and_truncated_inputs_link_components) ... ok
+test_conflicting_reversed_pairs_and_invalid_inputs (test_prepare.ProtocolTests.test_conflicting_reversed_pairs_and_invalid_inputs) ... ok
+test_edge_fallback_is_disjoint_and_accounts_for_every_row (test_prepare.ProtocolTests.test_edge_fallback_is_disjoint_and_accounts_for_every_row) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.487s
+
+OK

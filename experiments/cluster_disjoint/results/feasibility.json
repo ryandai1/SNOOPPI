@@ -1,0 +1,29 @@
+{
+  "protocol": "cluster_assignment_with_cross_partition_edges_excluded",
+  "assignment_trial": 123,
+  "assignment_seed": 44,
+  "candidate_assignments": 256,
+  "clean_rows": 36979,
+  "retained_rows": 17033,
+  "cross_partition_exclusions": 19946,
+  "clusters": 9680,
+  "interaction_components": 964,
+  "largest_component": 34276,
+  "splits": {
+    "train": {
+      "rows": 13648,
+      "positive": 11847,
+      "negative": 1801
+    },
+    "validation": {
+      "rows": 1602,
+      "positive": 1396,
+      "negative": 206
+    },
+    "test": {
+      "rows": 1783,
+      "positive": 1546,
+      "negative": 237
+    }
+  }
+}

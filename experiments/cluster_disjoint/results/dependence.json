@@ -1,0 +1,6 @@
+{
+  "test_interaction_components": 214,
+  "largest_test_component_pairs": 1212,
+  "largest_test_component_fraction": 0.6797532249018509,
+  "uncertainty": "No training-seed or independent-pair confidence intervals claimed."
+}

@@ -1,0 +1,10 @@
+rule,left,right,overlap
+full,train,validation,0
+full,train,test,0
+full,validation,test,0
+esm,train,validation,0
+esm,train,test,0
+esm,validation,test,0
+prott5,train,validation,0
+prott5,train,test,0
+prott5,validation,test,0

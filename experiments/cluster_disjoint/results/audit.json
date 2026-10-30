@@ -1,0 +1,18 @@
+{
+  "source_rows": 39003,
+  "invalid_rows": 588,
+  "conflict_rows": 1086,
+  "duplicate_rows": 0,
+  "normalized_collision_rows": 350,
+  "retained_rows": 36979,
+  "unique_full_sequences": 22490,
+  "class_counts": {
+    "1": 31998,
+    "0": 4981
+  },
+  "sources": {
+    "train": "56a9eaacf0af4322e7e318b54beaf1f113a60b82e6e2e3f601860b02647065e7",
+    "validation": "d6d1177ec417c8bd6517da7618b17fcfb79273758abe8bc6b22c37fdac19d21b",
+    "test": "ff23db8efbc30fc9f0021227f478bb506a3c6a7028470acfe5701ae4d3c2580c"
+  }
+}

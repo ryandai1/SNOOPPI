@@ -1,0 +1,32 @@
+{
+  "train": {
+    "name": "train.csv",
+    "bytes": 44669229,
+    "modified_time": "2026-09-17T11:14:42.000Z"
+  },
+  "validation": {
+    "name": "validation.csv",
+    "bytes": 5557519,
+    "modified_time": "2026-09-17T11:14:43.000Z"
+  },
+  "test": {
+    "name": "test.csv",
+    "bytes": 5574700,
+    "modified_time": "2026-09-17T11:14:43.000Z"
+  },
+  "prott5": {
+    "name": "prot_t5_embedding_cache.pt",
+    "bytes": 69754503,
+    "modified_time": "2026-09-17T11:14:47.000Z"
+  },
+  "esm2": {
+    "name": "esm2_t33_650M_snooppi_mean_pool_embeddings.pt",
+    "bytes": 82308919,
+    "modified_time": "2026-09-20T08:42:57.901Z"
+  },
+  "esmc": {
+    "name": "esmc_600m_snooppi_mean_pool_embeddings.pt",
+    "bytes": 78936475,
+    "modified_time": "2026-10-12T00:36:18.690Z"
+  }
+}

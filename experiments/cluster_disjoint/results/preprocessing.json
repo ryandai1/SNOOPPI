@@ -1,0 +1,10 @@
+{
+  "unique_raw_sequences": 22490,
+  "different_prott5_vs_esm_inputs": 0,
+  "ProtT5": "uppercase_UZOB_to_X_prefix1024",
+  "ESM": "canonical_X_spaces_removed_prefix_v1",
+  "metadata_identity": "full_uppercase_spaces_removed_sha256_v1",
+  "leakage_identity": "canonical_X_spaces_removed_prefix1024_sha256_v1",
+  "max_full_sequence_length": 34350,
+  "sequences_over_1024": 2784
+}

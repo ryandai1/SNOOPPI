@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source_rows_reconciled": 39003,
+  "frozen_file_hashes_verified": 20,
+  "cluster_overlap": 0,
+  "full_and_both_model_input_overlaps": 0,
+  "classifier_fits": 15,
+  "metric_rows": 45,
+  "test_predictions_verified": 26745,
+  "mlp_checkpoint_selections_verified": 12
+}

@@ -1,0 +1,29 @@
+{
+  "command": [
+    "work/cluster_disjoint/bin/mmseqs/bin/mmseqs",
+    "easy-cluster",
+    "work/cluster_disjoint/run_v2/proteins.fasta",
+    "work/cluster_disjoint/run_v2/mmseqs",
+    "work/cluster_disjoint/run_v2/tmp",
+    "--min-seq-id",
+    "0.3",
+    "-c",
+    "0.8",
+    "--cov-mode",
+    "0",
+    "--cluster-mode",
+    "1",
+    "--single-step-clustering",
+    "1",
+    "--max-seqs",
+    "1000",
+    "--seq-id-mode",
+    "0",
+    "-s",
+    "7.5",
+    "--threads",
+    "2"
+  ],
+  "version": "503743960fc57733a36951f5fa803cb3389af7e2",
+  "binary_sha256": "712678af793ec5a0c06c26204ed75ccf1b946c29b2d0d2dbfbbbdc0af9be0ded"
+}
