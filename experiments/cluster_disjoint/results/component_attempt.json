@@ -1,0 +1,14 @@
+{
+  "train": {
+    "rows": 34276,
+    "negative": 4375
+  },
+  "validation": {
+    "rows": 1351,
+    "negative": 303
+  },
+  "test": {
+    "rows": 1352,
+    "negative": 303
+  }
+}

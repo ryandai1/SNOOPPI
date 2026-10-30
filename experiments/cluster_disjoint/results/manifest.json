@@ -1,0 +1,26 @@
+{
+  "status": "frozen",
+  "protocol": "cluster_assignment_with_cross_partition_edges_excluded",
+  "files": {
+    "mmseqs_rep_seq.fasta": "77074f7ddd0f248db70acd4bb6495f9f20d8ed663dcfc7e2ea947a7cd4a38a7d",
+    "feasibility.json": "305967985469568f693e7dc248dac95a1edec0d77c124e036957ff44659140b3",
+    "audit.json": "a9f070a59635c7de9aca6c4ef318911665cbdadca6932d5f4a019388b6f4b366",
+    "clustering.json": "b4cafd3f168f2008320e0657c585034003bc86f1a555f184ca5c219d9e027350",
+    "overlap.csv": "65c4e757b0cf468fe5527ee6872e4a004f5570540c663ff5665924b71b8784a5",
+    "component_attempt.json": "907a49f7133f81ee1de3b1bd6dd3605c30fe5e42710f67fceb667971dd85f140",
+    "mmseqs_all_seqs.fasta": "2831b7f3a24bfedb718b44d0eae14cd499f1c59209894bdfed0c30b0d75d83ec",
+    "input_overlap.csv": "d50e1c9aa6046f21f576e17807a29947360cf25fdfd3948b360853e2c5eae3b5",
+    "clean_pairs.csv": "d3ac96024ce202b55cfff14228b42e4ab81fca764fd4fdeb37e5e15435e31c12",
+    "preprocessing.json": "878d8b9f227948b66778550752a433b29f770be070ee67b2a444000fa73bd0c0",
+    "mmseqs2_clusters.csv": "dc9992d16b5aac2cf498d16cea3593338e910b65e01c89e8c521ea9afc629bb4",
+    "protein_partition.csv": "ae950d969e3745e67280ce97e32acd8ad6daaaf539429d6f7e63649e4ac147da",
+    "validation.csv": "cd37254eca2372b3850c92694ef6c0a45eb6c6144a288e937b273b6623e79814",
+    "test.csv": "0b8f735a36671d5a94f3d83c1e12e88f887d6baeadee84ab71e3a0f0d44dba55",
+    "components.csv": "6644a3d9e844c8e22b99af4e47229ec49d5c8bef59c595fd2c2867cc49cb4d8b",
+    "train.csv": "ea5ce916a86141462ba773df6ab6b1abf7db57aa2131e996691aedb4e4f7ac1d",
+    "cross_partition_exclusions.csv": "4bf2c18c7a62528794e2a0ef91928426df94afc53f792ccc5dee5388184c4810",
+    "mmseqs_cluster.tsv": "f0dab153df56fcf1985683e0904d2518d6cb21ed98d36fbcf3be23c492702bd3",
+    "exclusions.csv": "db0be803026acd36dd69b4b0479901a5abd2e8284ccc9f9c36a74aa0dcb42c29",
+    "proteins.fasta": "48865276088a55f8db3060f0c7f0c782bf0d9b51fc2a4e9a5786335ead90ce86"
+  }
+}
