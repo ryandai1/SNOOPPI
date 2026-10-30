@@ -4,6 +4,13 @@ Independent workflow using the historical Drive split CSVs as one source pool.
 This defines a **new benchmark**: historical test scores are not matched comparisons.
 See `RESULTS.md` for the execution status and measured results.
 
+## Jupyter notebooks
+
+- [Executed experiment record](01_experiment_record.ipynb): saved audit outputs, all model comparisons, all 12 complete MLP epoch tables, and learning curves.
+- [Training code and optional rerun](02_training_code_and_rerun.ipynb): full original training implementation, preparation/splitting source displays, and an explicit opt-in cell for a fresh fit.
+
+Both notebooks execute top-to-bottom with their saved outputs. They were assembled after the command-line experiment: original histories are loaded from CSV, and training is disabled by default. Validation loss, minibatch logs, and optimizer checkpoints were not saved in the original run. No model was retrained to produce these notebooks. Open them from a repository clone so the adjacent source and aggregate files are available.
+
 ## Protocol
 
 - Validate binary labels and agreement with source labels. Exclude invalid protein
