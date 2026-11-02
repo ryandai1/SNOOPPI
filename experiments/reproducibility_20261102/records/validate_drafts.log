@@ -1,0 +1,9 @@
+PASS 00_data_audit_and_protocol.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 01_classical_embedding_baselines.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 02_strict_splits_and_negative_sampling.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 03_prott5_ablation_matrix.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 04_calibration_and_statistics.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 05_neural_architecture_drafts.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 06_mutation_and_interface_interpretability.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+PASS 07_mine_unknown_negatives.ipynb: schema, AST, shared setup, cleared outputs, disabled action switches
+Static checks only. Use tests and synthetic smoke execution for behavioral validation.

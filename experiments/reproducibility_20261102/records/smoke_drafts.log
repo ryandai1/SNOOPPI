@@ -1,0 +1,32 @@
+EXECUTE 00_data_audit_and_protocol.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 00_data_audit_and_protocol.ipynb
+EXECUTE 01_classical_embedding_baselines.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 01_classical_embedding_baselines.ipynb
+EXECUTE 02_strict_splits_and_negative_sampling.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 02_strict_splits_and_negative_sampling.ipynb
+EXECUTE 03_prott5_ablation_matrix.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 03_prott5_ablation_matrix.ipynb
+EXECUTE 04_calibration_and_statistics.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 04_calibration_and_statistics.ipynb
+EXECUTE 05_neural_architecture_drafts.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 05_neural_architecture_drafts.ipynb
+EXECUTE 06_mutation_and_interface_interpretability.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS 06_mutation_and_interface_interpretability.ipynb
+/workspace/SNOOPPI/scripts/smoke_drafts.py:185: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(cache_path, encoder)
+/workspace/SNOOPPI/scripts/smoke_drafts.py:185: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(cache_path, encoder)
+/workspace/SNOOPPI/scripts/smoke_drafts.py:185: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(cache_path, encoder)
+/workspace/SNOOPPI/scripts/smoke_drafts.py:183: UserWarning: Selected split shares proteins across partitions; it cannot support a cold-protein claim.
+  assert_model_ready(selected_splits)
+/workspace/SNOOPPI/scripts/smoke_drafts.py:185: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(cache_path, encoder)
+Synthetic smoke artifacts: /workspace/SNOOPPI/work/draft-smoke-yer6t5ca

@@ -1,0 +1,10 @@
+{
+  "label": "validate_notebooks",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "scripts/validate_notebooks.py"
+  ],
+  "exit_code": 0,
+  "seconds": 1.1673877239227295,
+  "log_sha256": "c9dbc0945ad237d374c846529b05213a550cec250c220387068678624319f6f8"
+}

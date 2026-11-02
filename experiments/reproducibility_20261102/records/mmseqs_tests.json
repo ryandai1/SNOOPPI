@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "seconds": 2.3431944847106934,
+  "command": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "experiments/mmseqs2_benchmark",
+    "-p",
+    "test_*.py",
+    "-v"
+  ]
+}

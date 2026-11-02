@@ -1,0 +1,21 @@
+test_near_identical_and_unrelated_full_length_sequences (test_mmseqs.MMseqs.test_near_identical_and_unrelated_full_length_sequences) ... ok
+test_conflict_quarantined (test_pipeline.Gates.test_conflict_quarantined) ... ok
+test_injected_homolog (test_pipeline.Gates.test_injected_homolog) ... ok
+test_injected_reversed_cross_partition_pair (test_pipeline.Gates.test_injected_reversed_cross_partition_pair) ... ok
+test_invalid_labels (test_pipeline.Gates.test_invalid_labels) ... ok
+test_invalid_sequence (test_pipeline.Gates.test_invalid_sequence) ... ok
+test_missing_cluster (test_pipeline.Gates.test_missing_cluster) ... ok
+test_partition_and_repeatability (test_pipeline.Gates.test_partition_and_repeatability) ... ok
+test_reversed_duplicate (test_pipeline.Gates.test_reversed_duplicate) ... ok
+test_truncation_collision (test_pipeline.Gates.test_truncation_collision) ... ok
+test_complete_lifecycle (test_training.Training.test_complete_lifecycle) ... ok
+test_dominant_component_declines_inference (test_training.Training.test_dominant_component_declines_inference) ... ok
+test_head_reload_and_symmetry (test_training.Training.test_head_reload_and_symmetry) ... ok
+test_manifest_tamper (test_training.Training.test_manifest_tamper) ... ok
+test_missing_embedding_refuses_drop (test_training.Training.test_missing_embedding_refuses_drop) ... ok
+test_paired_component_interval (test_training.Training.test_paired_component_interval) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 27.407s
+
+OK

@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "seconds": 24.32574439048767,
+  "command": [
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ]
+}

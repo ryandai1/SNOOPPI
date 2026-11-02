@@ -1,0 +1,6 @@
+/workspace/SNOOPPI/drafting_code/snooppi_mining.py:358: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, metadata = load_embedding_cache(Path(path), "ProtT5")
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+PASS: notebook 07 executed end to end; 7 synthetic scores, 2 candidate review pairs, no training.
+Synthetic executed notebook and HTML: /workspace/SNOOPPI/work/mining-smoke-izicdsge/executed

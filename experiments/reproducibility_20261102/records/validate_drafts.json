@@ -1,0 +1,10 @@
+{
+  "label": "validate_drafts",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "scripts/validate_drafts.py"
+  ],
+  "exit_code": 0,
+  "seconds": 1.2188513278961182,
+  "log_sha256": "2e3d12976914433d0e5b76fbcff38db8d8546a071d053d94f0fe1e3c669cb649"
+}

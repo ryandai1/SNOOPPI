@@ -1,0 +1,19 @@
+{
+  "label": "training_seed45",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "experiments/cluster_disjoint/train.py",
+    "--inputs",
+    "/workspace/SNOOPPI/work/review_20261102/inputs",
+    "--splits",
+    "/workspace/SNOOPPI/work/review_20261102/split",
+    "--out",
+    "/workspace/SNOOPPI/work/review_20261102/seed45",
+    "--seed",
+    "45",
+    "--resume"
+  ],
+  "exit_code": 0,
+  "seconds": 17.960699319839478,
+  "log_sha256": "8c050a1e82034717cde9eb99429ee5e122a96d0217f04a8abde86d9dbf0dbeb3"
+}

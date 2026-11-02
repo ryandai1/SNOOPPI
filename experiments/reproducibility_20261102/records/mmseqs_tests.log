@@ -1,0 +1,13 @@
+test_command_parameters (test_pipeline.ProtocolTests.test_command_parameters) ... ok
+test_conflicts_stop_before_fasta (test_pipeline.ProtocolTests.test_conflicts_stop_before_fasta) ... ok
+test_end_to_end_disjoint_and_reloadable (test_pipeline.ProtocolTests.test_end_to_end_disjoint_and_reloadable) ... ok
+test_full_length_and_protected_source (test_pipeline.ProtocolTests.test_full_length_and_protected_source) ... ok
+test_giant_component_does_not_freeze (test_pipeline.ProtocolTests.test_giant_component_does_not_freeze) ... ok
+test_incomplete_mapping_rejected (test_pipeline.ProtocolTests.test_incomplete_mapping_rejected) ... ok
+test_swapped_duplicates_quarantined (test_pipeline.ProtocolTests.test_swapped_duplicates_quarantined) ... ok
+test_tampering_rejected (test_pipeline.ProtocolTests.test_tampering_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.534s
+
+OK

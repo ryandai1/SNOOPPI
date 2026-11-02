@@ -1,0 +1,10 @@
+{
+  "label": "smoke_mining",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "scripts/smoke_mining.py"
+  ],
+  "exit_code": 0,
+  "seconds": 14.333329200744629,
+  "log_sha256": "bb327aafe70123a78bffd1ddace7dc14eacb5be99b7ad5368432fc20080e4fc0"
+}

@@ -1,0 +1,10 @@
+PASS historical source preservation: notebooks/ablations/01_prott5_predictor_uzob_original.ipynb
+PASS historical source preservation: notebooks/02_esm2_benchmark.ipynb
+PASS historical source preservation: notebooks/03_esmc_benchmark.ipynb
+PASS 01_prott5_predictor.ipynb: 42 code cells validated; 2 IPython/shell cells excluded from Python AST parsing
+PASS 02_esm2_benchmark.ipynb: 18 code cells validated; 1 IPython/shell cells excluded from Python AST parsing
+PASS 03_esmc_benchmark.ipynb: 18 code cells validated; 0 IPython/shell cells excluded from Python AST parsing
+PASS 01_prott5_predictor_uzob_original.ipynb: 42 code cells validated; 2 IPython/shell cells excluded from Python AST parsing
+PASS 02_esm2_uzob_ablation.ipynb: 18 code cells validated; 1 IPython/shell cells excluded from Python AST parsing
+PASS 03_esmc_uzob_ablation.ipynb: 18 code cells validated; 0 IPython/shell cells excluded from Python AST parsing
+Static validation only. Full Colab execution and data/result audits were not performed.

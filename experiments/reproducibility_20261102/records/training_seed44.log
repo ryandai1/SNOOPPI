@@ -1,0 +1,19 @@
+/workspace/SNOOPPI/experiments/cluster_disjoint/train.py:63: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  c, meta = load_embedding_cache(args.inputs / f"{k}.pt", e)
+/workspace/SNOOPPI/experiments/cluster_disjoint/train.py:105: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(args.inputs / f"{k}.pt", e)
+prott5_rf_full completed 104.6 seconds
+prott5_mlp_full completed 24.7 seconds
+prott5_mlp_no_sum completed 15.9 seconds
+prott5_mlp_no_absdiff completed 20.7 seconds
+prott5_mlp_no_product completed 19.6 seconds
+esm2_rf_full completed 109.1 seconds
+esm2_mlp_full completed 39.8 seconds
+esm2_mlp_no_sum completed 32.9 seconds
+esm2_mlp_no_absdiff completed 44.6 seconds
+esm2_mlp_no_product completed 23.5 seconds
+esmc_rf_full completed 104.8 seconds
+esmc_mlp_full completed 45.7 seconds
+esmc_mlp_no_sum completed 43.2 seconds
+esmc_mlp_no_absdiff completed 42.2 seconds
+esmc_mlp_no_product completed 42.1 seconds

@@ -1,0 +1,17 @@
+{
+  "label": "regression",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "experiments/cluster_disjoint",
+    "experiments/cluster_disjoint_v1",
+    "experiments/mmseqs2_benchmark",
+    "--import-mode=importlib",
+    "-q"
+  ],
+  "exit_code": 2,
+  "seconds": 6.7841408252716064,
+  "log_sha256": "8ec143fdda7d41f0c1b8dcf7d5d2c52868691658129619f9460ebde9a2ec33ee"
+}

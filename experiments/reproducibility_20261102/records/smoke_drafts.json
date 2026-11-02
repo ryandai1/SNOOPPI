@@ -1,0 +1,10 @@
+{
+  "label": "smoke_drafts",
+  "command": [
+    "/workspace/.venvs/snooppi/bin/python",
+    "scripts/smoke_drafts.py"
+  ],
+  "exit_code": 0,
+  "seconds": 46.38506269454956,
+  "log_sha256": "98e218699c5c01bc673e7142256b8d3dfc52a9b80ad05b08dd80e408831cab10"
+}

@@ -1,0 +1,4 @@
+/workspace/SNOOPPI/experiments/cluster_disjoint/train.py:63: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  c, meta = load_embedding_cache(args.inputs / f"{k}.pt", e)
+/workspace/SNOOPPI/experiments/cluster_disjoint/train.py:105: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+  cache, _ = load_embedding_cache(args.inputs / f"{k}.pt", e)
