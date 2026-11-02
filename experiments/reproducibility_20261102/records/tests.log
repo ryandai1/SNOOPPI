@@ -1,0 +1,28 @@
+.....................................................................    [100%]
+=============================== warnings summary ===============================
+tests/test_draft_protocol.py::test_cache_metadata_coverage_and_symmetry
+  /workspace/SNOOPPI/tests/test_draft_protocol.py:243: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+    cache, metadata = load_embedding_cache(path, name)
+
+tests/test_draft_protocol.py::test_prott5_space_prefix_collisions_are_quarantined
+  /workspace/SNOOPPI/tests/test_draft_protocol.py:361: UserWarning: Selected split shares proteins across partitions; it cannot support a cold-protein claim.
+    assert_model_ready(splits)
+
+tests/test_draft_protocol.py::test_explicit_csv_filenames_drive_loading_and_hashes
+  /workspace/SNOOPPI/tests/test_draft_protocol.py:399: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+    cache, _ = load_embedding_cache(path, encoder)
+
+tests/test_draft_protocol.py::test_explicit_plm_cache_filenames_are_used
+  /workspace/SNOOPPI/tests/test_draft_protocol.py:431: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+    cache, _ = load_embedding_cache(path, encoder)
+
+tests/test_rf_baseline.py::test_notebook_protocol[True]
+tests/test_rf_baseline.py::test_notebook_protocol[False]
+  01_classical_embedding_baselines.ipynb:9:4: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+
+tests/test_unknown_mining.py: 24 warnings
+  /workspace/SNOOPPI/drafting_code/snooppi_mining.py:358: UserWarning: Legacy ProtT5 cache has no encoder revision/preprocessing metadata; dimension and coverage will be checked.
+    cache, metadata = load_embedding_cache(Path(path), "ProtT5")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+69 passed, 30 warnings in 22.54s

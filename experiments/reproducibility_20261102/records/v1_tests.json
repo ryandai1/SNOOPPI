@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "seconds": 30.983344078063965,
+  "command": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "experiments/cluster_disjoint_v1",
+    "-p",
+    "test_*.py",
+    "-v"
+  ]
+}

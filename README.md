@@ -6,7 +6,9 @@ Research notebooks for binary protein–protein interaction classification using
 
 [Dataset](https://huggingface.co/datasets/ChatterjeeLab/SNOOPPI) · [Paper](https://doi.org/10.1093/bioinformatics/btag736) · [Reproducibility notes](docs/reference/reproducibility.md)
 
-> **Experiment status:** Data, model weights, embeddings, and experiment outputs are external to this repository. Saved notebook outputs were cleared; this edition has **not been rerun** to regenerate results.
+> **Experiment status:** The [October 30 cluster-disjoint benchmark](experiments/cluster_disjoint/RESULTS.md) completed 15 matched classifier fits and includes [executed record and training-code notebooks](experiments/cluster_disjoint/README.md). Its published verification receipt covers source reconciliation, frozen hashes, overlap checks, predictions, and checkpoint selection. These are exploratory results from one training seed. The historical notebooks under `notebooks/` remain source-only workflows; their outputs were cleared during cleanup. Raw data, embedding caches, and row-level experiment artifacts remain external to Git.
+
+**Latest reproducibility review:** [November 2 results and notebook guide](experiments/reproducibility_20261102/README.md) covers 45 fits across three seeds, saved verification, and unresolved data-provenance limits. Start with its portable results notebook.
 
 ## Contents
 
@@ -24,6 +26,7 @@ Research notebooks for binary protein–protein interaction classification using
 
 | I want to… | Start with |
 | --- | --- |
+| Review the completed cluster-disjoint benchmark | [Results, protocol, and limitations](experiments/cluster_disjoint/RESULTS.md), then the [executed notebooks and reproduction instructions](experiments/cluster_disjoint/README.md). Earlier preparation status files are historical records. |
 | Run the main experiments | [Notebook order](#notebook-order), then [running instructions](#running-the-experiments). Prepare Google Colab with a GPU, mounted Google Drive, and the shared split CSVs. |
 | Audit existing splits or compare cached embeddings | [Draft experiment guide](docs/guides/draft-experiments.md). |
 | Review unknown-pair candidates | [Mining artifact guide](docs/guides/unknown-pair-mining.md). Low model scores do not confirm negative interactions. |
@@ -33,6 +36,7 @@ Research notebooks for binary protein–protein interaction classification using
 
 | Location | What you will find |
 | --- | --- |
+| [`experiments/cluster_disjoint/`](experiments/cluster_disjoint/README.md) | Completed real-data benchmark, aggregate results, verification receipt, and executed notebooks. |
 | [`notebooks/`](notebooks/README.md) | The three main ProtT5, ESM-2, and ESM-C experiments. |
 | [`notebooks/ablations/`](notebooks/ablations/README.md) | Original ProtT5 snapshot and U/Z/O/B-only ESM preprocessing ablations; cache migration guide. |
 | [`drafting_code/`](drafting_code/README.md) | Draft audits, baselines, ablations, statistics, interpretability, and unknown-pair mining workflows, plus shared helpers. |
@@ -113,7 +117,7 @@ Checkpoint selection maximizes **validation macro average precision**. The class
 - **Macro-AP** is the arithmetic mean of positive and negative AP; it is not positive-only AP or trapezoidal area under a precision–recall curve.
 - **Macro-F1** averages the two class F1 scores at the validation-selected threshold.
 
-Report class counts and prevalence alongside these metrics. The notebooks' sigmoid scores have not been demonstrated to be calibrated interaction probabilities and are not binding-affinity estimates. No numerical leaderboard is included because this cleanup did not rerun the experiments or verify their input CSVs.
+Report class counts and prevalence alongside these metrics. The notebooks' sigmoid scores have not been demonstrated to be calibrated interaction probabilities and are not binding-affinity estimates. The [completed cluster-disjoint report](experiments/cluster_disjoint/RESULTS.md) contains measured comparisons on its new benchmark; historical pair-row scores are not matched comparisons with that benchmark.
 
 ## Reproducibility and limitations
 

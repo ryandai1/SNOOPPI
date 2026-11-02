@@ -1,0 +1,38 @@
+[
+  {
+    "name": "train",
+    "bytes": 44669229,
+    "sha256": "56a9eaacf0af4322e7e318b54beaf1f113a60b82e6e2e3f601860b02647065e7",
+    "matches_published": true
+  },
+  {
+    "name": "validation",
+    "bytes": 5557519,
+    "sha256": "d6d1177ec417c8bd6517da7618b17fcfb79273758abe8bc6b22c37fdac19d21b",
+    "matches_published": true
+  },
+  {
+    "name": "test",
+    "bytes": 5574700,
+    "sha256": "ff23db8efbc30fc9f0021227f478bb506a3c6a7028470acfe5701ae4d3c2580c",
+    "matches_published": true
+  },
+  {
+    "name": "prott5",
+    "bytes": 69754503,
+    "sha256": "93a72e4aaa6b6f0d9a3cbc4023453bd2747c62e4fe08fcf174d86a24c1cba5fd",
+    "matches_published": true
+  },
+  {
+    "name": "esm2",
+    "bytes": 82308919,
+    "sha256": "ad72211f8c54b897592456a6e339a30233ae5f2cb8b12132bef3b18fd7b1ae92",
+    "matches_published": true
+  },
+  {
+    "name": "esmc",
+    "bytes": 78936475,
+    "sha256": "1267e1d40dc8c2d7444e9486b7c34c64ea2485505d6bde72c149a91d5f81960c",
+    "matches_published": true
+  }
+]

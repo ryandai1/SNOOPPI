@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 44,
+    "fits": 15,
+    "test_predictions_verified": 26745,
+    "selected_epochs_verified": 12
+  },
+  {
+    "seed": 45,
+    "fits": 15,
+    "test_predictions_verified": 26745,
+    "selected_epochs_verified": 12
+  },
+  {
+    "seed": 46,
+    "fits": 15,
+    "test_predictions_verified": 26745,
+    "selected_epochs_verified": 12
+  }
+]

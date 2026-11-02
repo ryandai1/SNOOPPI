@@ -1,0 +1,3 @@
+comparison,mean_delta,bootstrap_low,bootstrap_high,valid_draws,invalid_draws
+prott5_rf_full minus prott5_mlp_full,0.03356266474774394,-0.006192366864352777,0.12484999200450357,1000,0
+prott5_rf_full minus esmc_mlp_full,0.01918747206529629,-0.05190768613518304,0.048635303171631276,1000,0

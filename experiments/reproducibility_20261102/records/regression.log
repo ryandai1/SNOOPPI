@@ -1,0 +1,37 @@
+
+==================================== ERRORS ====================================
+________ ERROR collecting experiments/cluster_disjoint/test_prepare.py _________
+ImportError while importing test module '/workspace/SNOOPPI/experiments/cluster_disjoint/test_prepare.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+experiments/cluster_disjoint/test_prepare.py:4: in <module>
+    from prepare import audit, assign, A, B
+E   ModuleNotFoundError: No module named 'prepare'
+______ ERROR collecting experiments/cluster_disjoint_v1/test_pipeline.py _______
+ImportError while importing test module '/workspace/SNOOPPI/experiments/cluster_disjoint_v1/test_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+experiments/cluster_disjoint_v1/test_pipeline.py:3: in <module>
+    from pipeline import A,B,Y,audit,partition,validate,digest,normalized,pair_id
+E   ModuleNotFoundError: No module named 'pipeline'
+______ ERROR collecting experiments/cluster_disjoint_v1/test_training.py _______
+ImportError while importing test module '/workspace/SNOOPPI/experiments/cluster_disjoint_v1/test_training.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+experiments/cluster_disjoint_v1/test_training.py:11: in <module>
+    import train as run
+E   ModuleNotFoundError: No module named 'train'
+_______ ERROR collecting experiments/mmseqs2_benchmark/test_pipeline.py ________
+ImportError while importing test module '/workspace/SNOOPPI/experiments/mmseqs2_benchmark/test_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+experiments/mmseqs2_benchmark/test_pipeline.py:10: in <module>
+    from pipeline import (prepare, freeze, read_mapping, verified_manifest, command,
+E   ModuleNotFoundError: No module named 'pipeline'
+=========================== short test summary info ============================
+ERROR experiments/cluster_disjoint/test_prepare.py
+ERROR experiments/cluster_disjoint_v1/test_pipeline.py
+ERROR experiments/cluster_disjoint_v1/test_training.py
+ERROR experiments/mmseqs2_benchmark/test_pipeline.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!!
+4 errors in 5.41s
